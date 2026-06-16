@@ -22,7 +22,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500&family=Hanken+Grotesk:wght@300;400;500&display=swap"
         rel="stylesheet">
 
-  <link rel="stylesheet" href="css/styles.css?v=4">
+  <link rel="stylesheet" href="css/styles.css?v=9">
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -46,6 +46,10 @@
 
     <!-- HERO -->
     <section id="hero" aria-labelledby="hero-heading">
+      <video class="hero-video" autoplay muted loop playsinline aria-hidden="true">
+        <source src="assets/turntable-volumen.webm" type="video/webm">
+        <source src="assets/turntable-volumen.mp4"  type="video/mp4">
+      </video>
       <div class="hero-bg"   aria-hidden="true"></div>
       <div class="hero-grid" aria-hidden="true"></div>
 
@@ -120,19 +124,19 @@
       <div class="container">
         <ul class="numbers-grid" style="list-style:none">
           <li class="number-item reveal">
-            <div class="num">60<span>€</span></div>
+            <div class="num"><span class="num-value" data-count-from="139" data-count-to="60">60</span><span>€</span></div>
             <div class="desc">Einführungspreis</div>
           </li>
           <li class="number-item reveal reveal-delay-1">
-            <div class="num">199<span>€</span></div>
+            <div class="num"><span class="num-value" data-count-from="0" data-count-to="199">199</span><span>€</span></div>
             <div class="desc">Rückerstattbare Kaution</div>
           </li>
           <li class="number-item reveal reveal-delay-2">
-            <div class="num">8</div>
+            <div class="num"><span class="num-value" data-count-from="0" data-count-to="8">8</span></div>
             <div class="desc">Wochen Challenge</div>
           </li>
           <li class="number-item reveal reveal-delay-3">
-            <div class="num">100<span>%</span></div>
+            <div class="num"><span class="num-value" data-count-from="0" data-count-to="100">100</span><span>%</span></div>
             <div class="desc">Rückerstattbar bei Zielerreichung</div>
           </li>
         </ul>
@@ -521,7 +525,7 @@
 
     <!-- EMOTIONAL -->
     <section id="emotional" aria-labelledby="emotional-heading">
-      <div class="container">
+      <div class="container emotional-grid">
         <div class="emotional-content">
           <span class="label label-line reveal" style="display:inline-flex;justify-content:center">Das System</span>
           <h2 id="emotional-heading" class="reveal">
@@ -538,6 +542,13 @@
           <div class="quote-block reveal reveal-delay-2">
             <blockquote>Dein Engagement hat jetzt einen Wert.</blockquote>
           </div>
+        </div>
+
+        <div class="emotional-media reveal reveal-delay-2" aria-hidden="true">
+          <img src="assets/imagen-extra.png" alt="" class="emotional-img" width="1122" height="1402" loading="lazy">
+          <span class="floating-word fw-1">Disziplin</span>
+          <span class="floating-word fw-2">Fortschritt</span>
+          <span class="floating-word fw-3">Stärke</span>
         </div>
       </div>
     </section>
@@ -1228,6 +1239,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=5"></script>
+  <script src="js/main.js?v=8"></script>
 </body>
 </html>
