@@ -132,13 +132,55 @@
     document.addEventListener('mouseleave', () => { glow.style.opacity = '0'; visible = false; });
   }
 
+  /* ─── FORM PROGRESS BAR — highlight step as user scrolls into each block ─── */
+  const formProgress = document.querySelector('.form-progress');
+  if (formProgress) {
+    const fpSteps = formProgress.querySelectorAll('.fp-step');
+    const formBlocks = document.querySelectorAll('.form-block');
+    if (formBlocks.length && fpSteps.length) {
+      const blockObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          const idx = Array.from(formBlocks).indexOf(entry.target);
+          fpSteps.forEach((s, i) => s.classList.toggle('fp-active', i === idx));
+        });
+      }, { threshold: 0.4 });
+      formBlocks.forEach(b => blockObserver.observe(b));
+    }
+  }
+
   /* ─── FORMULARIO → FORMSPREE → STRIPE ─── */
   const form = document.getElementById('solicitudForm');
   if (form) {
+    /* Real-time validation: highlight required fields on blur */
+    form.querySelectorAll('input[required], select[required], textarea[required]').forEach(field => {
+      field.addEventListener('blur', () => {
+        const invalid = !field.value.trim();
+        field.classList.toggle('field-error', invalid);
+      });
+      field.addEventListener('input', () => field.classList.remove('field-error'));
+    });
+
     form.addEventListener('submit', async function(e) {
       e.preventDefault();
       const btn = form.querySelector('button[type="submit"]');
       const stripeUrl = form.querySelector('input[name="_next"]').value;
+
+      /* Validate required checkboxes */
+      const saludConsent = form.querySelector('#f-salud-consent');
+      const avisoMedico  = form.querySelector('#f-aviso');
+      if (saludConsent && !saludConsent.checked) {
+        saludConsent.closest('.form-checkbox').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        saludConsent.closest('.form-checkbox').style.outline = '2px solid #e05555';
+        setTimeout(() => { saludConsent.closest('.form-checkbox').style.outline = ''; }, 3000);
+        return;
+      }
+      if (avisoMedico && !avisoMedico.checked) {
+        avisoMedico.closest('.form-checkbox').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        avisoMedico.closest('.form-checkbox').style.outline = '2px solid #e05555';
+        setTimeout(() => { avisoMedico.closest('.form-checkbox').style.outline = ''; }, 3000);
+        return;
+      }
 
       btn.disabled = true;
       btn.textContent = 'Wird gesendet…';
@@ -154,12 +196,12 @@
           window.location.href = stripeUrl;
         } else {
           btn.disabled = false;
-          btn.textContent = 'Weiter zur Zahlung — 259 €';
+          btn.textContent = 'Meinen Platz anfragen — kostenlos & unverbindlich';
           alert('Fehler beim Senden. Bitte versuche es erneut.');
         }
       } catch {
         btn.disabled = false;
-        btn.textContent = 'Weiter zur Zahlung — 259 €';
+        btn.textContent = 'Meinen Platz anfragen — kostenlos & unverbindlich';
         alert('Verbindungsfehler. Bitte versuche es erneut.');
       }
     });

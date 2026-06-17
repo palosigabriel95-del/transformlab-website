@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Danke — Transform·Lab</title>
+  <meta name="robots" content="noindex, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500&family=Hanken+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=22">
+  <style>
+    .danke-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 24px 80px;
+    }
+    .danke-inner {
+      max-width: 640px;
+      text-align: center;
+    }
+    .danke-icon {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: var(--green-dim);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 40px;
+      border: 1px solid var(--green);
+    }
+    .danke-icon svg {
+      width: 36px; height: 36px;
+      color: var(--green-light);
+    }
+    .danke-inner h1 {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      margin-bottom: 20px;
+    }
+    .danke-inner .lead {
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--text-muted);
+      margin-bottom: 48px;
+    }
+    .next-steps {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      margin-bottom: 40px;
+      text-align: left;
+    }
+    .next-steps h3 {
+      font-size: 1rem;
+      color: var(--text);
+      margin-bottom: 20px;
+      font-family: var(--font-display);
+    }
+    .next-steps ol {
+      padding-left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .next-steps li {
+      color: var(--text-muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .next-steps li strong { color: var(--text); }
+    .danke-cta {
+      display: inline-block;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav class="site-nav scrolled" aria-label="Navigation">
+      <div class="nav-inner">
+        <a href="index.html" class="logo">Transform<span>·</span>Lab</a>
+        <a href="index.html#form" class="nav-cta">Platz sichern</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="danke-page">
+      <div class="danke-inner">
+
+        <div class="danke-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+        </div>
+
+        <h1>Danke. Deine Anfrage wurde erhalten.</h1>
+
+        <p class="lead">
+          Wir haben deine Angaben erhalten und melden uns innerhalb von
+          <strong>24–48 Stunden</strong> bei dir. Bitte überprüfe deinen Posteingang
+          (und den Spam-Ordner) für eine Bestätigungsemail von uns.
+        </p>
+
+        <div class="next-steps">
+          <h3>Was passiert jetzt?</h3>
+          <ol>
+            <li><strong>Wir überprüfen deine Anfrage</strong> — wir prüfen, ob das Programm für deine Ziele und deinen Ausgangspunkt geeignet ist.</li>
+            <li><strong>Du erhältst eine Rückmeldung</strong> — entweder eine Bestätigung deines Platzes oder eine Nachricht mit weiteren Fragen.</li>
+            <li><strong>Zielvereinbarung</strong> — gemeinsam legen wir dein Wochenziel, die Messmethode und die Kaution-Bedingungen schriftlich fest.</li>
+            <li><strong>Programmstart</strong> — du erhältst deinen persönlichen Ernährungs- und Trainingsplan ab Tag 1.</li>
+          </ol>
+        </div>
+
+        <a href="index.html" class="btn-secondary danke-cta">← Zurück zur Startseite</a>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a href="index.html" class="logo" style="font-size:12px;letter-spacing:.15em">Transform<span>·</span>Lab</a>
+      <p>© 2026 Transform·Lab · <a href="impressum.html" style="color:var(--text-muted)">Impressum</a> · <a href="datenschutz.html" style="color:var(--text-muted)">Datenschutz</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>

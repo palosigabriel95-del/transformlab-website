@@ -1311,3 +1311,254 @@ section { padding: 120px 0; }
   font-size: 12px;
   color: var(--text-dim);
 }
+
+/* ─── WARUM TRANSFORM·LAB ─── */
+#warum { background: var(--surface); }
+.warum-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 64px;
+}
+@media (max-width: 768px) {
+  .warum-grid { grid-template-columns: 1fr; gap: 24px; }
+}
+.warum-card {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 40px 32px;
+  transition: border-color .3s, transform .3s;
+}
+.warum-card:hover {
+  border-color: var(--green);
+  transform: translateY(-4px);
+}
+.warum-icon {
+  width: 48px; height: 48px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--green-dim);
+  border-radius: var(--radius);
+  margin-bottom: 24px;
+  color: var(--green-light);
+}
+.warum-icon svg { width: 22px; height: 22px; }
+.warum-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+  color: var(--text);
+}
+.warum-card p { font-size: 14px; line-height: 1.7; }
+
+/* ─── SO FUNKTIONIERT DIE KAUTION ─── */
+#kaution { background: var(--black); }
+.kaution-intro {
+  max-width: 640px;
+  margin: 24px 0 64px;
+  font-size: 16px;
+  line-height: 1.8;
+}
+.kaution-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .kaution-grid { grid-template-columns: 1fr; gap: 32px; }
+}
+.kaution-table {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.kaution-table-head {
+  display: grid;
+  grid-template-columns: 80px 1fr 100px;
+  padding: 14px 20px;
+  background: var(--surface2);
+  border-bottom: 1px solid var(--border);
+  font-size: 11px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  font-weight: 500;
+}
+.kaution-row {
+  display: grid;
+  grid-template-columns: 80px 1fr 100px;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+  transition: background .2s;
+}
+.kaution-row:hover { background: var(--surface2); }
+.kaution-row--last { border-bottom: 2px solid var(--border-light); }
+.kaution-row--total {
+  background: var(--green-dim);
+  border-bottom: none;
+  font-weight: 500;
+}
+.kaution-row--total .kw,
+.kaution-row--total .kc,
+.kaution-row--total .kr { color: var(--text); }
+.kw { color: var(--text-muted); font-size: 13px; }
+.kc { color: var(--text-muted); font-size: 13px; }
+.kr { color: var(--green-light); font-weight: 500; text-align: right; }
+.kaution-rules {
+  padding: 8px 0;
+}
+.kaution-rules h4 {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 28px;
+  color: var(--text);
+  font-family: var(--font-display);
+}
+.kaution-rules-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.kaution-rules-list li {
+  display: flex;
+  gap: 14px;
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+.kr-icon {
+  color: var(--green);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.kaution-rules-list strong { color: var(--text); }
+
+/* ─── TRUST LAYER ─── */
+#trust { background: var(--surface); }
+#trust .label { margin-bottom: 40px; display: block; text-align: center; }
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 0;
+}
+@media (max-width: 900px) {
+  .trust-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 540px) {
+  .trust-grid { grid-template-columns: 1fr; }
+}
+.trust-item {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 28px 24px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  transition: border-color .3s, transform .3s;
+}
+.trust-item:hover {
+  border-color: var(--green-dim);
+  transform: translateY(-2px);
+}
+.trust-icon {
+  width: 40px; height: 40px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--green-light);
+  background: var(--green-dim);
+  border-radius: var(--radius);
+  flex-shrink: 0;
+}
+.trust-icon svg { width: 18px; height: 18px; }
+.trust-item h4 {
+  font-size: .95rem;
+  font-weight: 500;
+  color: var(--text);
+  font-family: var(--font-display);
+}
+.trust-item p { font-size: 13px; line-height: 1.6; }
+
+/* ─── FORM PROGRESS BAR ─── */
+.form-progress {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+.fp-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+.fp-num {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-dim);
+  transition: background .3s, border-color .3s, color .3s;
+}
+.fp-label {
+  font-size: 11px;
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+.fp-step.fp-active .fp-num {
+  background: var(--green);
+  border-color: var(--green);
+  color: #fff;
+}
+.fp-step.fp-active .fp-label { color: var(--green-light); }
+.fp-line {
+  width: 40px;
+  height: 1px;
+  background: var(--border);
+  margin-bottom: 18px;
+  flex-shrink: 0;
+}
+@media (max-width: 600px) {
+  .fp-label { display: none; }
+  .fp-line { width: 24px; }
+}
+
+/* ─── FORM PRICE SUMMARY ─── */
+.form-price-summary {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+}
+.fps-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+.fps-row strong { color: var(--text); font-size: 15px; }
+.fps-note {
+  font-size: 12px;
+  color: var(--green-light);
+  margin-top: 8px;
+}
+
+/* ─── FIELD VALIDATION ERROR ─── */
+.field-error {
+  border-color: #e05555 !important;
+  outline: none;
+}
+.field-error:focus {
+  box-shadow: 0 0 0 3px rgba(224,85,85,.2);
+}
