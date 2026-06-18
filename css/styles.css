@@ -1300,7 +1300,7 @@ section { padding: 120px 0; }
   gap: 10px;
   margin-top: 6px;
 }
-.radio-grid--inline { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); }
+.radio-grid--inline { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
 .radio-card {
   display: flex;
   align-items: center;
@@ -1323,6 +1323,8 @@ section { padding: 120px 0; }
   color: var(--text-muted);
   font-family: var(--font-body);
   font-weight: 400;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 .radio-card:has(input:checked) .radio-label { color: var(--text); }
 
