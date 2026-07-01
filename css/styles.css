@@ -649,6 +649,11 @@ section { padding: 120px 0; }
 }
 .testimonial-author strong { display: block; font-size: .9rem; color: var(--text); font-weight: 500; }
 .testimonial-author span { font-size: .8rem; color: var(--text-dim); }
+.review-form-card { border-style: dashed; border-color: var(--border); }
+.star-rating { display: flex; gap: 4px; margin-bottom: 4px; }
+.star-rating span { font-size: 24px; color: var(--border); cursor: pointer; transition: color .15s; }
+.star-rating span.active { color: var(--gold, #c9a870); }
+.star-rating span:hover, .star-rating span.hover { color: var(--gold, #c9a870); }
 .quote-block {
   border: 1px solid var(--border-light); border-radius: var(--radius-xl);
   padding: 40px 48px; position: relative; background: var(--surface);

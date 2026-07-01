@@ -762,6 +762,50 @@
               </div>
             </div>
           </div>
+          <!-- Reseña form -->
+          <div class="testimonial-card review-form-card reveal reveal-delay-3">
+            <p style="font-size:.85rem;color:var(--text-muted);margin-bottom:16px;font-weight:500;">Hast du Transform·Lab ausprobiert? Teile deine Erfahrung:</p>
+            <form action="https://formspree.io/f/mzdqyror" method="POST" id="reviewForm">
+              <input type="hidden" name="_subject" value="Neue Kundenbewertung – Transform·Lab">
+              <input type="hidden" name="typ" value="Bewertung">
+
+              <div style="margin-bottom:12px;">
+                <input type="text" name="name" placeholder="Dein Name *" required
+                  style="width:100%;background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:9px 12px;color:var(--text);font-size:13px;font-family:inherit;">
+              </div>
+
+              <div style="margin-bottom:12px;">
+                <select name="plan" required
+                  style="width:100%;background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:9px 12px;color:var(--text);font-size:13px;font-family:inherit;">
+                  <option value="">Welchen Plan hast du gebucht? *</option>
+                  <option value="Nur Plan (139 €)">Nur Plan (139 €)</option>
+                  <option value="Challenge mit Kaution (259 €)">Challenge mit Kaution (259 €)</option>
+                </select>
+              </div>
+
+              <div style="margin-bottom:12px;">
+                <div class="star-rating" id="starRating">
+                  <span data-val="1">★</span>
+                  <span data-val="2">★</span>
+                  <span data-val="3">★</span>
+                  <span data-val="4">★</span>
+                  <span data-val="5">★</span>
+                </div>
+                <input type="hidden" name="bewertung" id="bewertungInput" required>
+              </div>
+
+              <div style="margin-bottom:12px;">
+                <textarea name="erfahrung" placeholder="Deine Erfahrung *" rows="3" required
+                  style="width:100%;background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:9px 12px;color:var(--text);font-size:13px;font-family:inherit;resize:vertical;"></textarea>
+              </div>
+
+              <button type="submit"
+                style="width:100%;background:var(--green);color:#fff;border:none;border-radius:6px;padding:10px;font-size:13px;font-weight:500;cursor:pointer;font-family:inherit;">
+                Bewertung absenden
+              </button>
+            </form>
+            <p id="reviewThanks" style="display:none;color:var(--green-light);font-size:14px;margin-top:12px;">✓ Danke für deine Bewertung!</p>
+          </div>
         </div>
       </div>
     </section>
@@ -1721,5 +1765,32 @@
   </footer>
 
   <script src="js/main.js?v=22"></script>
+  <script>
+    (function(){
+      var stars = document.querySelectorAll('#starRating span');
+      var input = document.getElementById('bewertungInput');
+      var selected = 0;
+      stars.forEach(function(s){
+        s.addEventListener('mouseenter', function(){
+          var v = +this.dataset.val;
+          stars.forEach(function(x){ x.classList.toggle('hover', +x.dataset.val <= v); });
+        });
+        s.addEventListener('mouseleave', function(){
+          stars.forEach(function(x){ x.classList.remove('hover'); });
+        });
+        s.addEventListener('click', function(){
+          selected = +this.dataset.val;
+          input.value = selected + ' von 5 Sternen';
+          stars.forEach(function(x){ x.classList.toggle('active', +x.dataset.val <= selected); });
+        });
+      });
+      var form = document.getElementById('reviewForm');
+      if(form) form.addEventListener('submit', function(e){
+        e.preventDefault();
+        fetch(form.action, { method:'POST', body: new FormData(form), headers:{Accept:'application/json'} })
+          .then(function(r){ if(r.ok){ form.style.display='none'; document.getElementById('reviewThanks').style.display='block'; } });
+      });
+    })();
+  </script>
 </body>
 </html>
