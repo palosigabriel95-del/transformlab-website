@@ -237,7 +237,11 @@
           const payload = {};
           formData.forEach((v, k) => { payload[k] = v; });
           try {
-            await fetch('https://hook.eu1.make.com/5i4ktv2j7jdmwwyp6ycbfpbagyng1flp', {
+            const selectedPlan = form.querySelector('input[name="plan"]:checked')?.value;
+            const webhookUrl = selectedPlan === 'nur_plan'
+              ? 'https://hook.eu1.make.com/sd7tkyhcdq1bjok0y3lb5ubg78kxv7me'
+              : 'https://hook.eu1.make.com/5i4ktv2j7jdmwwyp6ycbfpbagyng1flp';
+            await fetch(webhookUrl, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify(payload)
