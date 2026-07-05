@@ -239,7 +239,7 @@
           try {
             const selectedPlan = form.querySelector('input[name="plan"]:checked')?.value;
             const webhookUrl = selectedPlan === 'nur_plan'
-              ? 'https://hook.eu1.make.com/sd7tkyhcdq1bjok0y3lb5ubg78kxv7me'
+              ? 'https://hook.eu1.make.com/3wnfjy64go8desrcct79oxrdk1xbbeji'
               : 'https://hook.eu1.make.com/5i4ktv2j7jdmwwyp6ycbfpbagyng1flp';
             await fetch(webhookUrl, {
               method: 'POST',
