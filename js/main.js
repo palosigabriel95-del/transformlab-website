@@ -368,6 +368,27 @@
     });
   });
 
+  /* ─── CAMPO SCHWANGER: visible solo si Geschlecht = weiblich ─── */
+  const schwangerWrap   = document.getElementById('schwanger-wrap');
+  const schwangerFirst  = document.getElementById('schwanger-nein');
+
+  document.querySelectorAll('input[name="geschlecht"]').forEach(radio => {
+    radio.addEventListener('change', () => {
+      const isWeiblich = radio.value === 'weiblich';
+      if (schwangerWrap) {
+        schwangerWrap.hidden = !isWeiblich;
+        if (schwangerFirst) {
+          isWeiblich
+            ? schwangerFirst.setAttribute('required', '')
+            : schwangerFirst.removeAttribute('required');
+        }
+        if (!isWeiblich) {
+          document.querySelectorAll('input[name="schwanger"]').forEach(r => r.checked = false);
+        }
+      }
+    });
+  });
+
   /* ─── FAQ ACORDEÓN ─── */
   document.querySelectorAll('.faq-question').forEach(btn => {
     btn.addEventListener('click', () => {
