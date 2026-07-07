@@ -226,36 +226,25 @@
       btn.textContent = 'Wird gesendet…';
 
       try {
-        const res = await fetch(form.action, {
+        const formData = new FormData(form);
+        const payload = {};
+        formData.forEach((v, k) => { payload[k] = v; });
+
+        const selectedPlan = form.querySelector('input[name="plan"]:checked')?.value;
+        const webhookUrl = selectedPlan === 'nur_plan'
+          ? 'https://hook.eu1.make.com/3wnfjy64go8desrcct79oxrdk1xbbeji'
+          : 'https://hook.eu1.make.com/5i4ktv2j7jdmwwyp6ycbfpbagyng1flp';
+
+        await fetch(webhookUrl, {
           method: 'POST',
-          body: new FormData(form),
-          headers: { 'Accept': 'application/json' }
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
         });
 
-        if (res.ok) {
-          const formData = new FormData(form);
-          const payload = {};
-          formData.forEach((v, k) => { payload[k] = v; });
-          try {
-            const selectedPlan = form.querySelector('input[name="plan"]:checked')?.value;
-            const webhookUrl = selectedPlan === 'nur_plan'
-              ? 'https://hook.eu1.make.com/3wnfjy64go8desrcct79oxrdk1xbbeji'
-              : 'https://hook.eu1.make.com/5i4ktv2j7jdmwwyp6ycbfpbagyng1flp';
-            await fetch(webhookUrl, {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(payload)
-            });
-          } catch (e) {}
-          window.location.href = stripeUrl;
-        } else {
-          btn.disabled = false;
-          btn.textContent = (form.querySelector('input[name="plan"]:checked')?.value === 'nur_plan') ? 'Kostenpflichtig bestellen — 139 €' : 'Platz anfragen';
-          alert('Fehler beim Senden. Bitte versuche es erneut.');
-        }
+        window.location.href = stripeUrl;
       } catch {
         btn.disabled = false;
-        btn.textContent = 'Meinen Platz anfragen — kostenlos & unverbindlich';
+        btn.textContent = (form.querySelector('input[name="plan"]:checked')?.value === 'nur_plan') ? 'Kostenpflichtig bestellen — 139 €' : 'Platz anfragen';
         alert('Verbindungsfehler. Bitte versuche es erneut.');
       }
     });
