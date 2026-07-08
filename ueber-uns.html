@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Über uns — Transform·Lab</title>
+  <meta name="robots" content="index, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500&family=Hanken+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=41">
+  <style>
+    .ueber-page { max-width: 860px; margin: 0 auto; padding: 140px 24px 100px; }
+    .back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--text-muted); font-size: 13px; text-decoration: none; margin-bottom: 48px; transition: color .2s; }
+    .back-link:hover { color: var(--text); }
+    .ueber-page h1 { font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 8px; }
+    .ueber-page .subtitle { color: var(--green-light); font-size: 1rem; letter-spacing: .05em; text-transform: uppercase; margin-bottom: 40px; display: block; }
+    .ueber-page p { color: var(--text-muted); line-height: 1.8; font-weight: 300; margin-bottom: 16px; }
+    .ueber-page .quote { color: var(--green-light); font-style: italic; font-size: 1.1rem; margin: 32px 0; padding-left: 20px; border-left: 2px solid var(--green); }
+    .ueber-divider { border: none; border-top: 1px solid var(--border); margin: 56px 0; }
+    .ueber-page h2 { font-size: 1.5rem; margin-bottom: 16px; }
+    .kaution-box { background: var(--surface); border-radius: 16px; border-left: 3px solid var(--green); padding: 36px; margin-bottom: 56px; }
+    .kaution-box h2 { font-size: 1.4rem; margin-bottom: 12px; }
+    .kaution-box p { margin-bottom: 12px; }
+    .fuer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 12px; }
+    @media (max-width: 640px) { .fuer-grid { grid-template-columns: 1fr; } }
+    .fuer-card { background: var(--surface); border-radius: 16px; padding: 28px; }
+    .fuer-card.ja { border-top: 3px solid var(--green); }
+    .fuer-card.nein { border-top: 3px solid #555; }
+    .fuer-card h3 { font-size: 1.1rem; margin-bottom: 18px; }
+    .fuer-card.nein h3 { color: var(--text-muted); }
+    .fuer-card ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+    .fuer-card ul li { display: flex; gap: 10px; color: var(--text-muted); font-weight: 300; line-height: 1.6; }
+    .fuer-card.ja ul li span:first-child { color: var(--green); flex-shrink: 0; }
+    .fuer-card.nein ul li span:first-child { flex-shrink: 0; }
+    .fuer-card .note { margin-top: 20px; font-size: 0.85rem; color: var(--text-muted); }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav class="site-nav scrolled" aria-label="Navigation">
+      <div class="nav-inner">
+        <a href="index.html" class="logo">Transform<span>·</span>Lab</a>
+        <a href="index.html#form" class="nav-cta">Platz sichern</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="ueber-page">
+
+      <a href="index.html" class="back-link">← Zurück zur Startseite</a>
+
+      <span class="subtitle">Über uns</span>
+      <h1>Warum wir Transform·Lab gegründet haben</h1>
+      <p style="color:var(--text-muted);font-size:1rem;margin-bottom:40px;">Gabriel &amp; Ionel Palosi — Gründer von Transform·Lab</p>
+
+      <p>Transform·Lab wurde aus einer einfachen Idee geboren: Menschen brauchen nicht nur eine Diät. Sie brauchen einen echten Grund, nicht aufzugeben.</p>
+      <p>Wir, Gabriel und Ionel Palosi, sind mit Sport aufgewachsen. Mit 17 Jahren begannen wir mit dem Training — aus dem Wunsch heraus, gut auszusehen und fit zu sein. Aber mit der Zeit verstanden wir: Die echte Transformation passiert nicht nur durch Training. Sie passiert durch Disziplin, Ernährung, Konsequenz und Verantwortung.</p>
+      <p>Wir haben Fehler gemacht, gelernt, gelesen, getestet — und am eigenen Körper erlebt, wie wichtig ein klarer Plan ist. Dann sahen wir dasselbe bei Menschen um uns herum: Viele wollten abnehmen, gaben aber zu früh auf, weil ihnen Unterstützung, Struktur und Vertrauen fehlten.</p>
+      <p>Deshalb haben wir Transform·Lab gegründet: ein System, das Ernährung, Training und Verantwortung in einem realistischen Prozess verbindet. Wir versprechen keine Wunder. Wir versprechen keine Ergebnisse ohne Aufwand. Wir versprechen Richtung, Unterstützung und einen Rahmen, der dir hilft, konsequent zu bleiben.</p>
+
+      <p class="quote">„Manchmal brauchst du keine weitere Diät. Du brauchst jemanden, der dich daran erinnert, warum du angefangen hast."</p>
+
+      <hr class="ueber-divider">
+
+      <!-- Warum Kaution -->
+      <div class="kaution-box">
+        <h2>Warum die Kaution?</h2>
+        <p>Weil es viel leichter ist aufzugeben, wenn man sich zu nichts verpflichtet hat.</p>
+        <p>Die Transform·Lab-Kaution ist kein Druck. Keine Strafe. Sie ist ein <strong>Verantwortungssystem</strong>. Der Kunde tritt in einen Prozess ein, setzt sich ein realistisches Ziel, erhält einen angepassten Plan und verpflichtet sich, die notwendigen Schritte einzuhalten: Ernährung, Training, Check-ins und ehrliche Kommunikation.</p>
+        <p>Wer den Prozess durchhält, wird dafür belohnt. Für uns geht es bei der Kaution nicht ums Geld — es geht darum, dass du lernst, dein eigenes Wort zu halten. Transform·Lab bietet dir keinen Zauber über Nacht. Es bietet dir einen Rahmen, in dem es schwerer wird, dir selbst aufzugeben.</p>
+      </div>
+
+      <!-- Für wen / Nicht für wen -->
+      <h2>Für wen ist Transform·Lab?</h2>
+      <p>Transform·Lab ist für echte Menschen. Die mit einem vollen Leben, einem unberechenbaren Alltag und einer Geschichte voller Starts, die zu früh aufgehört haben.</p>
+
+      <div class="fuer-grid">
+        <div class="fuer-card ja">
+          <h3>Transform·Lab ist für dich, wenn…</h3>
+          <ul>
+            <li><span>→</span><span>Du mehrmals versucht hast abzunehmen und es leid bist, immer wieder von vorne anzufangen.</span></li>
+            <li><span>→</span><span>Du weißt, was zu tun wäre — dir aber die Struktur fehlt, um dran zu bleiben.</span></li>
+            <li><span>→</span><span>Du leicht aufgibst — nicht weil du nicht kannst, sondern weil du nie jemanden hattest, der sagt: „Mach weiter."</span></li>
+            <li><span>→</span><span>Du einen realistischen Plan willst, keine extreme Diät, die du nach drei Tagen abbrichst.</span></li>
+            <li><span>→</span><span>Du nach Rückschlägen das Vertrauen verloren hast und es zurückgewinnen willst.</span></li>
+            <li><span>→</span><span>Du bereit bist, ernsthaft anzufangen. Nicht perfekt. Ernsthaft.</span></li>
+          </ul>
+        </div>
+
+        <div class="fuer-card nein">
+          <h3>Wahrscheinlich nicht für dich, wenn…</h3>
+          <ul>
+            <li><span>→</span><span>Du eine Wunderlösung oder Ergebnisse über Nacht suchst.</span></li>
+            <li><span>→</span><span>Du nur einen Plan willst, den du nie umsetzt.</span></li>
+            <li><span>→</span><span>Du nicht bereit bist, Aufwand zu investieren oder konsequent zu sein.</span></li>
+            <li><span>→</span><span>Du immer eine Ausrede findest, um anzufangen.</span></li>
+            <li><span>→</span><span>Du bereits sehr diszipliniert bist und deine Ziele alleine erreichst.</span></li>
+          </ul>
+          <p class="note">Das bedeutet nicht, dass etwas nicht stimmt. Es bedeutet nur, dass du gerade etwas anderes brauchst — und das sagen wir dir lieber ehrlich.</p>
+        </div>
+      </div>
+
+      <hr class="ueber-divider">
+
+      <p style="text-align:center;"><a href="index.html#form" style="display:inline-block;background:var(--green);color:#fff;padding:16px 40px;border-radius:8px;text-decoration:none;font-weight:500;">Meinen Platz sichern</a></p>
+
+    </div>
+  </main>
+
+</body>
+</html>
