@@ -251,10 +251,18 @@
   }
 
   /* ─── REVIEW FORM ─────────────────────────────────────────────────────────── */
+  const REVIEW_WEBHOOK = 'https://hook.eu1.make.com/9komlatl5uykeyo3xh6np8xnmemuun01';
   const reviewForm = document.getElementById('reviewForm');
   if (reviewForm) {
     reviewForm.addEventListener('submit', e => {
       e.preventDefault();
+      const data = Object.fromEntries(new FormData(reviewForm).entries());
+      // Enviar la reseña a Make.com (llega por email a hallo@transform-lab.de)
+      fetch(REVIEW_WEBHOOK, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      }).catch(() => { /* mostrar el agradecimiento igualmente */ });
       reviewForm.style.display = 'none';
       const thanks = document.getElementById('reviewThanks');
       if (thanks) thanks.style.display = 'block';
