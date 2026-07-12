@@ -6,7 +6,7 @@
 
   <title>Transform·Lab — Wir bezahlen dich fürs Abnehmen</title>
   <meta name="description"
-        content="Persönlicher Ernährungs- und Trainingsplan ab 139 €. Oder starte die 8-Wochen-Challenge mit rückerstattbarer Kaution — bis zu 199 € zurück bei Zielerreichung.">
+        content="Persönlicher Ernährungs- und Trainingsplan. Oder starte deine individuelle Challenge mit rückerstattbarer Kaution — bis zu 199 € zurück, Woche für Woche.">
 
   <meta property="og:type"        content="website">
   <meta property="og:url"         content="https://www.transform-lab.de/">
@@ -38,7 +38,7 @@
     "@context": "https://schema.org",
     "@type": "Service",
     "name": "Transform·Lab",
-    "description": "8-Wochen Körpertransformationsprogramm mit rückerstattbarer Commitment-Kaution. Persönlicher Ernährungs- und Trainingsplan inklusive.",
+    "description": "Individuelles Körpertransformationsprogramm mit rückerstattbarer Commitment-Kaution. Persönlicher Ernährungs- und Trainingsplan inklusive.",
     "url": "https://www.transform-lab.de/",
     "provider": {
       "@type": "Person",
@@ -165,8 +165,8 @@
             <div class="desc">Rückerstattbare Kaution</div>
           </li>
           <li class="number-item reveal reveal-delay-2">
-            <div class="num"><span class="num-value" data-count-from="0" data-count-to="8">8</span></div>
-            <div class="desc">Wochen Challenge</div>
+            <div class="num"><span class="num-value" data-count-from="1" data-count-to="8">8</span></div>
+            <div class="desc">Wochen — individuell</div>
           </li>
           <li class="number-item reveal reveal-delay-3">
             <div class="num"><span class="num-value" data-count-from="0" data-count-to="100">100</span><span>%</span></div>
@@ -766,7 +766,7 @@
           <!-- Reseña form -->
           <div class="testimonial-card review-form-card reveal reveal-delay-3">
             <p style="font-size:.85rem;color:var(--text-muted);margin-bottom:16px;font-weight:500;">Hast du Transform·Lab ausprobiert? Teile deine Erfahrung:</p>
-            <form action="https://formspree.io/f/mzdqyror" method="POST" id="reviewForm">
+            <form action="#" method="POST" id="reviewForm">
               <input type="hidden" name="_subject" value="Neue Kundenbewertung – Transform·Lab">
               <input type="hidden" name="typ" value="Bewertung">
 
@@ -1387,7 +1387,7 @@
         </p>
         <p class="form-microcopy" id="formMicrocopy" hidden>Falls Angaben fehlen oder unklar sind, melden wir uns per E-Mail bei dir.</p>
 
-        <form class="solicitud-form reveal reveal-delay-2" id="solicitudForm" action="https://formspree.io/f/mzdqyror" method="POST">
+        <form class="solicitud-form reveal reveal-delay-2" id="solicitudForm" action="#" method="POST">
           <input type="hidden" name="_subject" value="Neue Transform·Lab Anfrage">
           <input type="hidden" name="_next" value="https://www.transform-lab.de/danke.html">
           <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
@@ -1454,7 +1454,12 @@
               </div>
             </div>
 
-            <div class="form-group" id="f-mensaje-wrap">
+            <div class="form-notice" style="display:flex;gap:10px;align-items:flex-start;background:var(--surface);border-left:3px solid var(--green);border-radius:0 8px 8px 0;padding:12px 16px;margin-bottom:16px;font-size:13px;color:var(--text-muted);line-height:1.6;">
+              <svg style="flex-shrink:0;margin-top:2px" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <span>Mit dem richtigen Plan ist <strong>bis zu 1 kg Gewichtsverlust pro Woche</strong> möglich. Wir prüfen dein Ziel persönlich und melden uns mit einem ehrlichen, machbaren Plan — bevor irgendetwas bezahlt wird.</span>
+            </div>
+
+<div class="form-group" id="f-mensaje-wrap">
               <label for="f-mensaje">Kurze Nachricht <span style="color:var(--text-dim);font-weight:300">(optional)</span></label>
               <textarea id="f-mensaje" name="mensaje" rows="3"
                 placeholder="Was hat dich bisher aufgehalten? Was erwartest du vom Programm?"></textarea>
@@ -1729,7 +1734,7 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=24"></script>
+  <script src="js/main.js?v=26"></script>
   <script>
     (function(){
       var stars = document.querySelectorAll('#starRating span');

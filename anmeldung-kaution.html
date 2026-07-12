@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Challenge-Anmeldung — Transform·Lab</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500&family=Hanken+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=41">
+  <style>
+    .anmeldung-page {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 120px 24px 80px;
+    }
+
+    .anmeldung-header {
+      margin-bottom: 48px;
+    }
+    .anmeldung-header .tag {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--green-light);
+      margin-bottom: 12px;
+    }
+    .anmeldung-header h1 {
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      margin-bottom: 12px;
+    }
+    .anmeldung-header p {
+      color: var(--text-muted);
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* ─── FORM SECTIONS ─── */
+    .form-section {
+      background: var(--surface);
+      border-radius: var(--radius-xl);
+      padding: 28px;
+      margin-bottom: 16px;
+      border: 1px solid var(--border);
+    }
+    .form-section-title {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--green-light);
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ─── FORM ELEMENTS ─── */
+    .form-group { margin-bottom: 18px; }
+    .form-group:last-child { margin-bottom: 0; }
+
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      letter-spacing: .02em;
+    }
+    .form-required { color: var(--green-light); margin-left: 2px; }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    @media (max-width: 480px) { .form-row { grid-template-columns: 1fr; } }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    select,
+    textarea {
+      width: 100%;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 12px 14px;
+      color: var(--text);
+      font-size: 14px;
+      font-family: var(--font-body);
+      transition: border-color .2s;
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--green);
+    }
+    textarea { resize: vertical; }
+    select option { background: var(--surface2); }
+
+    /* ─── RADIO CARDS ─── */
+    .radio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 8px;
+    }
+    .radio-grid.weeks-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    @media (max-width: 480px) {
+      .radio-grid.weeks-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    .radio-card {
+      position: relative;
+      cursor: pointer;
+    }
+    .radio-card input {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .radio-label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 8px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--text-muted);
+      text-align: center;
+      transition: all .2s;
+      cursor: pointer;
+      line-height: 1.4;
+    }
+    .radio-card input:checked + .radio-label {
+      background: var(--green-dim);
+      border-color: var(--green);
+      color: var(--text);
+    }
+    .radio-card:hover .radio-label {
+      border-color: var(--border-light);
+      color: var(--text);
+    }
+
+    /* Week cards special style */
+    .week-card .radio-label {
+      flex-direction: column;
+      gap: 2px;
+      padding: 12px 6px;
+    }
+    .week-card .week-num {
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--text);
+      font-family: var(--font-display);
+    }
+    .week-card .week-lbl {
+      font-size: 10px;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+    .week-card input:checked + .radio-label .week-num { color: var(--green-light); }
+    .week-card input:checked + .radio-label .week-lbl { color: var(--green-light); }
+
+    /* ─── SCHWANGER ─── */
+    #ak-schwanger-wrap { margin-top: 14px; }
+
+    /* ─── NOTICE ─── */
+    .form-notice {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      background: var(--surface2);
+      border-left: 3px solid var(--green);
+      border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+      padding: 12px 16px;
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+    .form-notice svg { flex-shrink: 0; margin-top: 2px; color: var(--green-light); }
+    .form-notice strong { color: var(--text); }
+
+    /* ─── SUBMIT ─── */
+    .form-footer {
+      margin-top: 24px;
+    }
+    .form-consent {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      margin-bottom: 16px;
+      cursor: pointer;
+    }
+    .form-consent input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      accent-color: var(--green);
+    }
+    .form-consent span {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--green);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-lg);
+      padding: 16px 24px;
+      font-size: 15px;
+      font-weight: 500;
+      font-family: var(--font-body);
+      cursor: pointer;
+      transition: opacity .2s, transform .1s;
+    }
+    .btn-submit:hover { opacity: .9; }
+    .btn-submit:active { transform: scale(.99); }
+    .btn-submit:disabled { opacity: .5; cursor: not-allowed; }
+
+    .submit-note {
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-dim);
+      margin-top: 12px;
+    }
+
+    /* ─── SUCCESS ─── */
+    .success-state {
+      display: none;
+      text-align: center;
+      padding: 60px 24px;
+    }
+    .success-state .checkmark {
+      width: 56px;
+      height: 56px;
+      background: var(--green-dim);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+    }
+    .success-state h2 { margin-bottom: 12px; }
+    .success-state p { color: var(--text-muted); font-weight: 300; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav class="site-nav scrolled" aria-label="Navigation">
+      <div class="nav-inner">
+        <a href="index.html" class="logo">Transform<span>·</span>Lab</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="anmeldung-page">
+
+      <div class="anmeldung-header">
+        <span class="tag">Transform·Lab · Challenge mit Kaution</span>
+        <h1>Deine persönliche Anmeldung</h1>
+        <p>Füll dieses Formular vollständig aus — wir erstellen deinen individuellen Ernährungs- und Trainingsplan auf Basis deiner Angaben. Sobald alles da ist, erhältst du den Zahlungslink für die Kaution.</p>
+      </div>
+
+      <div class="form-notice">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <span>Mit dem richtigen Plan ist <strong>bis zu 1 kg Gewichtsverlust pro Woche</strong> möglich. Dein Ziel wurde bereits von uns geprüft und ist realistisch umsetzbar.</span>
+      </div>
+
+      <form id="kautionForm">
+
+        <!-- DAUER -->
+        <div class="form-section">
+          <div class="form-section-title">Programmdauer</div>
+          <div class="form-group">
+            <label>Wie viele Wochen möchtest du die Challenge machen? <span class="form-required">*</span></label>
+            <div class="radio-grid weeks-grid">
+              <label class="radio-card week-card">
+                <input type="radio" name="programmdauer" value="1" required>
+                <span class="radio-label"><span class="week-num">1</span><span class="week-lbl">Woche</span></span>
+              </label>
+              <label class="radio-card week-card">
+                <input type="radio" name="programmdauer" value="2">
+                <span class="radio-label"><span class="week-num">2</span><span class="week-lbl">Wochen</span></span>
+              </label>
+              <label class="radio-card week-card">
+                <input type="radio" name="programmdauer" value="3">
+                <span class="radio-label"><span class="week-num">3</span><span class="week-lbl">Wochen</span></span>
+              </label>
+              <label class="radio-card week-card">
+                <input type="radio" name="programmdauer" value="4">
+                <span class="radio-label"><span class="week-num">4</span><span class="week-lbl">Wochen</span></span>
+              </label>
+              <label class="radio-card week-card">
+                <input type="radio" name="programmdauer" value="5">
+                <span class="radio-label"><span class="week-num">5</span><span class="week-lbl">Wochen</span></span>
+              </label>
+              <label class="radio-card week-card">
+                <input type="radio" name="programmdauer" value="6">
+                <span class="radio-label"><span class="week-num">6</span><span class="week-lbl">Wochen</span></span>
+              </label>
+              <label class="radio-card week-card">
+                <input type="radio" name="programmdauer" value="7">
+                <span class="radio-label"><span class="week-num">7</span><span class="week-lbl">Wochen</span></span>
+              </label>
+              <label class="radio-card week-card">
+                <input type="radio" name="programmdauer" value="8">
+                <span class="radio-label"><span class="week-num">8</span><span class="week-lbl">Wochen</span></span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- PERSÖNLICHE DATEN -->
+        <div class="form-section">
+          <div class="form-section-title">Persönliche Daten</div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="ak-name">Name <span class="form-required">*</span></label>
+              <input type="text" id="ak-name" name="nombre" placeholder="Dein Name" required>
+            </div>
+            <div class="form-group">
+              <label for="ak-email">E-Mail <span class="form-required">*</span></label>
+              <input type="email" id="ak-email" name="email" placeholder="deine@email.de" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="ak-alter">Alter <span class="form-required">*</span></label>
+              <input type="number" id="ak-alter" name="alter" placeholder="z.B. 28" min="18" max="70" required>
+            </div>
+            <div class="form-group">
+              <label for="ak-groesse">Körpergröße (cm) <span class="form-required">*</span></label>
+              <input type="number" id="ak-groesse" name="groesse" placeholder="z.B. 175" min="140" max="220" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Geschlecht <span class="form-required">*</span></label>
+            <div class="radio-grid">
+              <label class="radio-card">
+                <input type="radio" name="geschlecht" value="maennlich" required id="ak-geschlecht-m">
+                <span class="radio-label">Männlich</span>
+              </label>
+              <label class="radio-card">
+                <input type="radio" name="geschlecht" value="weiblich" id="ak-geschlecht-w">
+                <span class="radio-label">Weiblich</span>
+              </label>
+              <label class="radio-card">
+                <input type="radio" name="geschlecht" value="divers">
+                <span class="radio-label">Divers</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group" id="ak-schwanger-wrap" hidden>
+            <label>Bist du schwanger? <span class="form-required">*</span></label>
+            <div class="radio-grid">
+              <label class="radio-card">
+                <input type="radio" name="schwanger" value="nein" id="ak-schwanger-nein">
+                <span class="radio-label">Nein</span>
+              </label>
+              <label class="radio-card">
+                <input type="radio" name="schwanger" value="ja">
+                <span class="radio-label">Ja</span>
+              </label>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- KÖRPER & ZIEL -->
+        <div class="form-section">
+          <div class="form-section-title">Körper & Ziel</div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="ak-gewicht">Aktuelles Gewicht (kg) <span class="form-required">*</span></label>
+              <input type="number" id="ak-gewicht" name="gewicht_aktuell" placeholder="z.B. 85" min="40" max="250" required>
+            </div>
+            <div class="form-group">
+              <label for="ak-zielgewicht">Zielgewicht (kg) <span class="form-required">*</span></label>
+              <input type="number" id="ak-zielgewicht" name="gewicht_ziel" placeholder="z.B. 78" min="40" max="250" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Hauptziel <span class="form-required">*</span></label>
+            <div class="radio-grid">
+              <label class="radio-card">
+                <input type="radio" name="objetivo" value="fett_verlieren" required>
+                <span class="radio-label">Fett verlieren</span>
+              </label>
+              <label class="radio-card">
+                <input type="radio" name="objetivo" value="muskeln_aufbauen">
+                <span class="radio-label">Muskeln aufbauen</span>
+              </label>
+              <label class="radio-card">
+                <input type="radio" name="objetivo" value="definition">
+                <span class="radio-label">Definition</span>
+              </label>
+              <label class="radio-card">
+                <input type="radio" name="objetivo" value="gewohnheiten">
+                <span class="radio-label">Gewohnheiten verbessern</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="ak-aktivitaet">Aktivitätslevel <span class="form-required">*</span></label>
+            <select id="ak-aktivitaet" name="aktivitaet" required>
+              <option value="" disabled selected>Bitte auswählen</option>
+              <option value="wenig_aktiv">Wenig aktiv — Bürojob, kaum Sport</option>
+              <option value="leicht_aktiv">Leicht aktiv — 1–2× Sport pro Woche</option>
+              <option value="maessig_aktiv">Mäßig aktiv — 3–4× Sport pro Woche</option>
+              <option value="sehr_aktiv">Sehr aktiv — 5+× oder körperliche Arbeit</option>
+            </select>
+          </div>
+
+        </div>
+
+        <!-- ERNÄHRUNG -->
+        <div class="form-section">
+          <div class="form-section-title">Ernährung</div>
+
+          <div class="form-group">
+            <label>Ernährungsweise <span class="form-required">*</span></label>
+            <div class="radio-grid">
+              <label class="radio-card">
+                <input type="radio" name="ernaehrung" value="alles" required>
+                <span class="radio-label">Alles</span>
+              </label>
+              <label class="radio-card">
+                <input type="radio" name="ernaehrung" value="vegetarisch">
+                <span class="radio-label">Vegetarisch</span>
+              </label>
+              <label class="radio-card">
+                <input type="radio" name="ernaehrung" value="vegan">
+                <span class="radio-label">Vegan</span>
+              </label>
+              <label class="radio-card">
+                <input type="radio" name="ernaehrung" value="sonstiges">
+                <span class="radio-label">Sonstiges</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="ak-allergien">Allergien / Unverträglichkeiten <span style="color:var(--text-dim);font-weight:300">(optional)</span></label>
+            <textarea id="ak-allergien" name="allergien" rows="2" placeholder="z.B. Laktose, Gluten, Nüsse..."></textarea>
+          </div>
+
+        </div>
+
+        <!-- TRAINING -->
+        <div class="form-section">
+          <div class="form-section-title">Training</div>
+
+          <div class="form-group">
+            <label>Trainingsort <span class="form-required">*</span></label>
+            <div class="radio-grid">
+              <label class="radio-card">
+                <input type="radio" name="trainingsort" value="fitnessstudio" required>
+                <span class="radio-label">Fitnessstudio</span>
+              </label>
+              <label class="radio-card">
+                <input type="radio" name="trainingsort" value="zuhause">
+                <span class="radio-label">Zuhause</span>
+              </label>
+              <label class="radio-card">
+                <input type="radio" name="trainingsort" value="beides">
+                <span class="radio-label">Beides</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="ak-trainingstage">Trainingstage pro Woche <span class="form-required">*</span></label>
+            <select id="ak-trainingstage" name="trainingstage" required>
+              <option value="" disabled selected>Bitte auswählen</option>
+              <option value="2">2 Tage</option>
+              <option value="3">3 Tage</option>
+              <option value="4">4 Tage</option>
+              <option value="5">5 Tage</option>
+              <option value="6">6 Tage</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="ak-verletzungen">Verletzungen / körperliche Einschränkungen <span style="color:var(--text-dim);font-weight:300">(optional)</span></label>
+            <textarea id="ak-verletzungen" name="verletzungen" rows="2" placeholder="z.B. Knieschmerzen, Rückenprobleme..."></textarea>
+          </div>
+
+        </div>
+
+        <!-- NACHRICHT -->
+        <div class="form-section">
+          <div class="form-section-title">Zusätzliche Infos</div>
+          <div class="form-group">
+            <label for="ak-nachricht">Weitere Angaben <span style="color:var(--text-dim);font-weight:300">(optional)</span></label>
+            <textarea id="ak-nachricht" name="nachricht_plan" rows="3" placeholder="Weitere Infos, Fragen oder besondere Umstände..."></textarea>
+          </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="form-footer">
+          <label class="form-consent">
+            <input type="checkbox" name="salud_einwilligung" required>
+            <span>Ich willige ausdrücklich ein, dass Transform·Lab meine gesundheitsbezogenen Angaben (Gewicht, Verletzungen, Erkrankungen) gemäß Art. 9 Abs. 2 lit. a DSGVO ausschließlich zur Erstellung meines persönlichen Programms verarbeitet. Diese Einwilligung kann ich jederzeit widerrufen.</span>
+          </label>
+
+          <button type="submit" class="btn-submit" id="akSubmitBtn">
+            Anmeldung absenden — Zahlungslink folgt per E-Mail
+          </button>
+          <p class="submit-note">Nach dem Absenden erhältst du den Zahlungslink für die 199 € Kaution + 60 € Programmbeitrag per E-Mail.</p>
+        </div>
+
+      </form>
+
+      <!-- SUCCESS -->
+      <div class="success-state" id="akSuccess">
+        <div class="checkmark">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--green-light)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h2>Anmeldung eingegangen!</h2>
+        <p>Du erhältst in Kürze deinen persönlichen Zahlungslink per E-Mail.<br>Sobald die Zahlung bestätigt ist, bekommst du deinen Plan.</p>
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+    // Schwanger field: show only for weiblich
+    const geschlechtRadios = document.querySelectorAll('input[name="geschlecht"]');
+    const schwangerWrap = document.getElementById('ak-schwanger-wrap');
+    geschlechtRadios.forEach(r => {
+      r.addEventListener('change', () => {
+        schwangerWrap.hidden = r.value !== 'weiblich';
+        if (r.value !== 'weiblich') {
+          document.querySelectorAll('input[name="schwanger"]').forEach(s => s.checked = false);
+        }
+      });
+    });
+
+    // Form submit
+    const form = document.getElementById('kautionForm');
+    const btn  = document.getElementById('akSubmitBtn');
+    const WEBHOOK = 'https://hook.eu1.make.com/d2uuffr0m3fl5vc2qekytt0wqc35l34i';
+
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      btn.disabled = true;
+      btn.textContent = 'Wird gesendet…';
+      try {
+        const data = {};
+        new FormData(form).forEach((v, k) => { data[k] = v; });
+        await fetch(WEBHOOK, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        form.style.display = 'none';
+        document.getElementById('akSuccess').style.display = 'block';
+      } catch {
+        btn.disabled = false;
+        btn.textContent = 'Anmeldung absenden — Zahlungslink folgt per E-Mail';
+        alert('Verbindungsfehler. Bitte versuche es erneut.');
+      }
+    });
+  </script>
+
+</body>
+</html>

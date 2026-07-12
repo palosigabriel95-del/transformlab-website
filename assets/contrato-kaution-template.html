@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teilnahme- und Kautionsbedingungen – Transform·Lab</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 10.5pt;
+    color: #1a1a1a;
+    background: #fff;
+    line-height: 1.65;
+  }
+
+  /* ─── HEADER ─────────────────────────────────────── */
+  .header {
+    background: #111;
+    padding: 36px 48px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 3px solid #c9a870;
+  }
+  .logo {
+    font-size: 22pt;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.5px;
+  }
+  .logo span { color: #c9a870; }
+  .doc-title { text-align: right; }
+  .doc-title h2 {
+    font-size: 9pt;
+    font-weight: 400;
+    color: #888;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .doc-title h1 {
+    font-size: 13pt;
+    font-weight: 600;
+    color: #c9a870;
+  }
+
+  /* ─── CLIENT BOX ──────────────────────────────────── */
+  .client-box {
+    background: #f8f6f2;
+    border-left: 4px solid #c9a870;
+    margin: 32px 48px 0;
+    padding: 20px 28px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .client-field label {
+    font-size: 8pt;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .client-field .value {
+    font-size: 11pt;
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+  .client-meta {
+    margin: 12px 48px 32px;
+    display: flex;
+    gap: 12px;
+  }
+  .meta-item {
+    background: #111;
+    color: #c9a870;
+    padding: 7px 16px;
+    border-radius: 4px;
+    font-size: 9pt;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+  }
+  .intro-text {
+    margin: 0 48px 28px;
+    font-size: 10pt;
+    color: #666;
+    font-style: italic;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+  }
+
+  /* ─── CONTENT ─────────────────────────────────────── */
+  .content { padding: 0 48px 48px; }
+
+  .section { margin-bottom: 26px; }
+
+  .section-title {
+    font-size: 11pt;
+    font-weight: 700;
+    color: #111;
+    border-bottom: 1.5px solid #c9a870;
+    padding-bottom: 5px;
+    margin-bottom: 11px;
+    letter-spacing: 0.01em;
+  }
+
+  p { margin-bottom: 8px; color: #333; font-size: 10.5pt; }
+
+  ul.body-list {
+    margin: 8px 0 8px 18px;
+    color: #333;
+    font-size: 10.5pt;
+    line-height: 1.75;
+  }
+  ul.body-list li { margin-bottom: 4px; }
+
+  ol.body-list {
+    margin: 8px 0 8px 20px;
+    color: #333;
+    font-size: 10.5pt;
+    line-height: 1.75;
+  }
+  ol.body-list li { margin-bottom: 5px; }
+
+  /* ─── INFO TABLE (Anbieter) ───────────────────────── */
+  .info-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 10pt;
+  }
+  .info-table th {
+    background: #111;
+    color: #c9a870;
+    padding: 8px 12px;
+    text-align: left;
+    font-size: 8.5pt;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .info-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #eee;
+    color: #333;
+  }
+  .info-table tr:nth-child(even) td { background: #f8f6f2; }
+
+  /* ─── REFUND TABLE ────────────────────────────────── */
+  .refund-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 10pt;
+  }
+  .refund-table thead tr { background: #111; }
+  .refund-table thead th {
+    padding: 9px 12px;
+    text-align: left;
+    color: #c9a870;
+    font-size: 8.5pt;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+  }
+  .refund-table tbody tr:nth-child(even) td { background: #f8f6f2; }
+  .refund-table tbody tr:nth-child(odd) td { background: #fff; }
+  .refund-table tbody td {
+    padding: 8px 12px;
+    color: #333;
+    border-bottom: 1px solid #eee;
+    font-size: 10pt;
+    vertical-align: top;
+  }
+  .refund-table tfoot td {
+    background: #c9a870;
+    padding: 9px 12px;
+    font-weight: 700;
+    color: #111;
+    font-size: 10.5pt;
+  }
+  .amt { font-weight: 700; color: #3a7d52; white-space: nowrap; }
+
+  /* ─── HIGHLIGHT BOX ───────────────────────────────── */
+  .highlight-box {
+    background: #f8f6f2;
+    border-left: 3px solid #c9a870;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-size: 10pt;
+    color: #555;
+  }
+
+  /* ─── PAGE BREAK ──────────────────────────────────── */
+  .page-break { page-break-before: always; padding-top: 28px; }
+
+  /* ─── CHECKBOXES ──────────────────────────────────── */
+  .checkbox-list { list-style: none; margin: 10px 0; }
+  .checkbox-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 9px 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 10.5pt;
+    color: #333;
+  }
+  .checkbox-list li:last-child { border-bottom: none; }
+  .checkbox {
+    width: 15px;
+    height: 15px;
+    border: 2px solid #c9a870;
+    border-radius: 2px;
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+
+  /* ─── SIGNATURE ───────────────────────────────────── */
+  .signature-section {
+    margin-top: 36px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+  }
+  .sig-block label {
+    display: block;
+    font-size: 8pt;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 6px;
+  }
+  .sig-line {
+    border-bottom: 1.5px solid #333;
+    height: 44px;
+    margin-bottom: 5px;
+  }
+  .sig-name { font-size: 9.5pt; color: #555; }
+
+  /* ─── FOOTER ──────────────────────────────────────── */
+  .footer {
+    background: #111;
+    padding: 14px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+  }
+  .footer span { font-size: 8.5pt; color: #666; }
+  .footer .brand { font-size: 9pt; color: #c9a870; font-weight: 600; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="logo">Transform<span>·</span>Lab</div>
+  <div class="doc-title">
+    <h2>Challenge mit Kaution</h2>
+    <h1>Teilnahme- &amp; Kautionsbedingungen</h1>
+  </div>
+</div>
+
+<!-- CLIENT BOX -->
+<div class="client-box">
+  <div class="client-field">
+    <label>Kunde / Kundin</label>
+    <div class="value">{{Name}}</div>
+  </div>
+  <div class="client-field">
+    <label>E-Mail</label>
+    <div class="value">{{Email}}</div>
+  </div>
+  <div class="client-field">
+    <label>Startdatum</label>
+    <div class="value">{{Startdatum}}</div>
+  </div>
+</div>
+<div class="client-meta">
+  <div class="meta-item">Challenge-Zeitraum: {{3.Programmdauer}} Wochen</div>
+  <div class="meta-item">Kaution: 199,00 EUR</div>
+  <div class="meta-item">Stand: {{formatDate(now; "DD.MM.YYYY")}}</div>
+</div>
+
+<p class="intro-text">
+  Dieses Dokument regelt die Teilnahme an der Transform·Lab Challenge mit Kaution und die Bedingungen,
+  unter denen die Kaution ganz oder teilweise zurückerstattet werden kann.
+</p>
+
+<!-- CONTENT -->
+<div class="content">
+
+  <!-- 1. Vertragspartner -->
+  <div class="section">
+    <div class="section-title">1. Vertragspartner und Zweck</div>
+    <p>Dieses Dokument beschreibt die Teilnahmebedingungen für die Transform·Lab Challenge mit Kaution. Ziel ist eine klare, faire und transparente Vereinbarung zwischen Transform·Lab und dem Kunden / der Kundin.</p>
+
+    <table class="info-table">
+      <thead>
+        <tr><th>Angaben</th><th>Details</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Name</strong></td><td>Transform·Lab</td></tr>
+        <tr><td><strong>Vertreten durch</strong></td><td>Gabriel &amp; Ionel Palosi</td></tr>
+        <tr><td><strong>E-Mail</strong></td><td>hallo@transform-lab.de</td></tr>
+        <tr><td><strong>Anschrift</strong></td><td>Heidenfelder Str. 12, 97209 Veitshochheim</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 2. Leistungsumfang -->
+  <div class="section">
+    <div class="section-title">2. Leistungsumfang der Challenge</div>
+    <p>Die Challenge unterstützt den Kunden / die Kundin dabei, Ernährung, Training und Selbstkontrolle strukturierter umzusetzen. Der Umfang richtet sich nach dem gebuchten Paket.</p>
+    <ul class="body-list">
+      <li>Erstellung eines individuellen Ernährungsplans auf Grundlage der übermittelten Kundendaten.</li>
+      <li>Erstellung eines Trainingsplans, sofern dieser Bestandteil des gebuchten Produkts ist.</li>
+      <li>Wöchentliche Check-ins nach dem vereinbarten Ablauf.</li>
+      <li>Allgemeine Empfehlungen zu Struktur, Umsetzung und Eigenkontrolle.</li>
+      <li>Bewertung der wöchentlichen Umsetzung für die mögliche Freigabe der Kautionsrückerstattung.</li>
+    </ul>
+    <p>Nicht Bestandteil der Leistung sind ärztliche Beratung, Diagnose, Therapie, Heilbehandlung, medizinische Betreuung oder die Behandlung von Beschwerden, Erkrankungen oder Verletzungen.</p>
+  </div>
+
+  <!-- 3. Kaution -->
+  <div class="section">
+    <div class="section-title">3. Kaution und Grundprinzip</div>
+    <p>Der Kunde / die Kundin zahlt zu Beginn der Challenge eine Kaution in Höhe von <strong>199,00 EUR</strong>. Die Kaution ist kein Gewinnversprechen und keine Garantie für ein bestimmtes Ergebnis auf der Waage. Sie dient als Verbindlichkeits- und Motivationssystem.</p>
+    <p>Die Rückerstattung hängt von der dokumentierten Umsetzung der vereinbarten Wochenziele ab, nicht von einem garantierten Gewichtsverlust oder einer garantierten optischen Veränderung.</p>
+  </div>
+
+  <!-- 4. Rückerstattungstabelle -->
+  <div class="section">
+    <div class="section-title">4. Rückerstattungstabelle</div>
+    <p>Die Kaution kann in wöchentlichen Anteilen freigegeben werden. Die folgende Tabelle zeigt die maximale Rückerstattung bei vollständiger und nachvollziehbarer Teilnahme.</p>
+    <table class="refund-table">
+      <thead>
+        <tr>
+          <th>Abschnitt</th>
+          <th>Max. Rückerstattung</th>
+          <th>Voraussetzung</th>
+        </tr>
+      </thead>
+      <tbody id="refund-tbody"></tbody>
+      <tfoot>
+        <tr><td><strong>Gesamt</strong></td><td><strong>199,00 EUR</strong></td><td>bei vollständiger Teilnahme</td></tr>
+      </tfoot>
+    </table>
+    <p>Die Freigabe einer Wochenrückerstattung erfolgt nach Prüfung des jeweiligen Check-ins. Die Auszahlung erfolgt nach Abschluss der Challenge oder nach gesonderter schriftlicher Vereinbarung.</p>
+  </div>
+
+  <!-- 5. Voraussetzungen -->
+  <div class="section">
+    <div class="section-title">5. Voraussetzungen pro Woche</div>
+    <p>Eine Wochenrückerstattung kann freigegeben werden, wenn die folgenden Bedingungen erfüllt sind:</p>
+    <ol class="body-list">
+      <li>Der wöchentliche Check-in wird vollständig und innerhalb der vereinbarten Frist eingereicht.</li>
+      <li>Der Ernährungsplan wird nachvollziehbar zu ca. 80 Prozent umgesetzt.</li>
+      <li>Die vereinbarten Trainingseinheiten werden durchgeführt oder bei Krankheit, Verletzung oder wichtigen Gründen rechtzeitig kommuniziert.</li>
+      <li>Gewicht, Maße, Fotos oder andere Fortschrittsdaten werden ehrlich und unverfälscht dokumentiert, soweit sie Bestandteil des Check-ins sind.</li>
+      <li>Der Kunde / die Kundin kommuniziert respektvoll, erreichbar und kooperativ.</li>
+      <li>Es werden keine falschen Angaben gemacht und keine Fortschrittsdaten manipuliert.</li>
+    </ol>
+    <div class="highlight-box">
+      Kleine Abweichungen im Alltag führen nicht automatisch zum Verlust der Rückerstattung. Entscheidend ist die ehrliche, nachvollziehbare und konstante Umsetzung der vereinbarten Wochenziele.
+    </div>
+  </div>
+
+  <!-- 6. Nicht erfüllt -->
+  <div class="section">
+    <div class="section-title">6. Wenn eine Woche nicht erfüllt wird</div>
+    <p>Wird eine Woche nicht erfüllt, entfällt grundsätzlich nur die Rückerstattung für diese konkrete Woche. Bereits freigegebene Wochenrückerstattungen bleiben bestehen, sofern sie ehrlich erarbeitet und korrekt dokumentiert wurden.</p>
+    <ul class="body-list">
+      <li><strong>Kein oder unvollständiger Check-in:</strong> keine Freigabe für diese Woche.</li>
+      <li><strong>Verspäteter Check-in ohne vorherige Absprache:</strong> keine automatische Freigabe.</li>
+      <li><strong>Wiederholte Nichterreichbarkeit:</strong> mögliche Einstufung als Abbruch.</li>
+      <li><strong>Falsche oder manipulierte Angaben:</strong> keine Rückerstattung für die betroffene Woche; bei schwerem Verstoß kann die weitere Teilnahme beendet werden.</li>
+    </ul>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- 7. Abbruch -->
+  <div class="section">
+    <div class="section-title">7. Abbruch der Challenge</div>
+    <p>Ein Abbruch liegt vor, wenn der Kunde / die Kundin die Teilnahme freiwillig beendet, trotz Erinnerung nicht mehr erreichbar ist oder wiederholt keine Check-ins einreicht.</p>
+    <ul class="body-list">
+      <li>Bei freiwilligem Abbruch entfallen alle zukünftigen, noch nicht freigegebenen Rückerstattungen.</li>
+      <li>Bereits freigegebene Rückerstattungen bleiben grundsätzlich bestehen.</li>
+      <li>Wenn der Kunde / die Kundin nach einer Erinnerung länger als 7 Tage nicht reagiert, kann Transform·Lab die Challenge als abgebrochen einstufen.</li>
+      <li>Ein späterer Neustart ist nur nach neuer Vereinbarung möglich.</li>
+    </ul>
+    <div class="highlight-box">
+      Bei Krankheit, Verletzung oder außergewöhnlichen Umständen sollte der Kunde / die Kundin Transform·Lab frühzeitig informieren. Eine Pause oder Anpassung kann individuell vereinbart werden, es besteht jedoch kein automatischer Anspruch auf Rückerstattung nicht erfüllter Wochen.
+    </div>
+  </div>
+
+  <!-- 8. Keine Erfolgsgarantie -->
+  <div class="section">
+    <div class="section-title">8. Keine Erfolgsgarantie</div>
+    <p>Transform·Lab verspricht keinen garantierten Gewichtsverlust, keine garantierte Gewichtszunahme, keinen garantierten Muskelaufbau und keine garantierte optische Veränderung. Ergebnisse hängen unter anderem von Ausgangssituation, Umsetzung, Ernährung, Training, Schlaf, Stress, Alltag und individueller Reaktion ab.</p>
+    <p>Die Challenge belohnt die Umsetzung der vereinbarten Wochenziele. Die Kaution ist daher an Verhalten, Dokumentation und Teilnahme gebunden, nicht an ein unrealistisches Ergebnis in Kilogramm.</p>
+  </div>
+
+  <!-- 9. Check-in Inhalte -->
+  <div class="section">
+    <div class="section-title">9. Check-in-Inhalte</div>
+    <p>Der wöchentliche Check-in kann je nach Ziel und Paket folgende Angaben enthalten:</p>
+    <ul class="body-list">
+      <li>Aktuelles Körpergewicht</li>
+      <li>Umsetzung der Ernährung in Prozent oder als kurze Selbsteinschätzung</li>
+      <li>Absolvierte Trainingseinheiten</li>
+      <li>Energie, Hunger, Schlaf und allgemeines Wohlbefinden</li>
+      <li>Optional Maße oder Fortschrittsfotos, wenn diese vorher vereinbart wurden</li>
+      <li>Fragen, Schwierigkeiten oder relevante Veränderungen im Alltag</li>
+    </ul>
+    <p>Der Kunde / die Kundin ist dafür verantwortlich, alle relevanten Informationen wahrheitsgemäß mitzuteilen. Besonders Beschwerden, Verletzungen, Medikamente, ärztliche Behandlungen oder Unsicherheiten müssen vor Beginn oder bei Auftreten während der Challenge kommuniziert werden.</p>
+  </div>
+
+  <!-- 10. Datenschutz -->
+  <div class="section">
+    <div class="section-title">10. Datenschutz und Fortschrittsdaten</div>
+    <p>Im Rahmen der Challenge können personenbezogene Daten wie Name, E-Mail-Adresse, Körpergewicht, Maße, Check-in-Angaben und optional Fortschrittsfotos verarbeitet werden. Diese Daten werden zur Erstellung, Durchführung und Auswertung der Challenge genutzt.</p>
+    <ul class="body-list">
+      <li>Fortschrittsfotos werden nicht öffentlich verwendet, sofern keine separate ausdrückliche Zustimmung vorliegt.</li>
+      <li>Gesundheitsbezogene Angaben werden vertraulich behandelt und nur im Rahmen der Challenge berücksichtigt.</li>
+      <li>Der Kunde / die Kundin kann Auskunft über gespeicherte Daten verlangen.</li>
+      <li>Eine Löschung kann verlangt werden, soweit keine gesetzlichen Aufbewahrungspflichten oder berechtigten Gründe entgegenstehen.</li>
+    </ul>
+  </div>
+
+  <!-- 11. Widerrufsrecht -->
+  <div class="section">
+    <div class="section-title">11. Widerrufsrecht bei Online-Buchung</div>
+    <p>Wenn die Challenge online, per Nachricht, per E-Mail oder außerhalb von Geschäftsräumen verkauft wird, kann für Verbraucher ein gesetzliches Widerrufsrecht bestehen. Die Widerrufsbelehrung muss separat und klar vor Vertragsschluss bereitgestellt werden.</p>
+    <p>Beginnt Transform·Lab auf ausdrücklichen Wunsch des Kunden / der Kundin bereits vor Ablauf der Widerrufsfrist mit der Leistung, sollte dies separat dokumentiert werden.</p>
+    <div class="highlight-box">
+      Dieses Dokument ersetzt keine vollständige Widerrufsbelehrung.
+    </div>
+  </div>
+
+  <!-- 12. Kommunikation -->
+  <div class="section">
+    <div class="section-title">12. Kommunikation</div>
+    <p>Die Kommunikation erfolgt über die vereinbarten Kanäle, zum Beispiel E-Mail oder ein anderes vereinbartes System. Der Kunde / die Kundin verpflichtet sich, wichtige Informationen vollständig und rechtzeitig mitzuteilen.</p>
+    <p>Transform·Lab antwortet im Rahmen der vereinbarten Betreuung. Es besteht kein Anspruch auf sofortige Antwort zu jeder Tages- und Nachtzeit.</p>
+  </div>
+
+  <!-- 13. Wichtiger Hinweis -->
+  <div class="section">
+    <div class="section-title">13. Wichtiger Hinweis</div>
+    <p>Dieser Plan und diese Challenge ersetzen keine ärztliche Beratung, Diagnose oder Therapie. Bei gesundheitlichen Beschwerden, Erkrankungen, Verletzungen, Medikamenteneinnahme, Essstörungen, Schwangerschaft oder Unsicherheiten sollte vor Beginn ärztlicher Rat eingeholt werden.</p>
+    <p>Die Umsetzung erfolgt eigenverantwortlich. Der Plan dient der allgemeinen Unterstützung bei Ernährung, Training und Struktur.</p>
+  </div>
+
+  <!-- 14. Bestätigung -->
+  <div class="section">
+    <div class="section-title">14. Bestätigung des Kunden / der Kundin</div>
+    <p style="margin-bottom: 14px;">Mit der Unterschrift bestätigt der Kunde / die Kundin, die Teilnahme- und Kautionsbedingungen gelesen und verstanden zu haben.</p>
+
+    <ul class="checkbox-list">
+      <li>
+        <div class="checkbox"></div>
+        <span>Ich verstehe, dass die Rückerstattung an Umsetzung, Check-ins und ehrliche Dokumentation gebunden ist.</span>
+      </li>
+      <li>
+        <div class="checkbox"></div>
+        <span>Ich verstehe, dass kein bestimmter Gewichtsverlust, Muskelaufbau oder optisches Ergebnis garantiert wird.</span>
+      </li>
+      <li>
+        <div class="checkbox"></div>
+        <span>Ich bestätige, dass meine Angaben zu Allergien, Verletzungen, Medikamenten und ärztlicher Behandlung vollständig und ehrlich sind.</span>
+      </li>
+      <li>
+        <div class="checkbox"></div>
+        <span>Ich bin einverstanden, dass meine Check-in-Daten zur Durchführung der Challenge verarbeitet werden.</span>
+      </li>
+      <li>
+        <div class="checkbox"></div>
+        <span>Ich verstehe, dass Fotos ohne separate ausdrückliche Zustimmung nicht veröffentlicht werden.</span>
+      </li>
+    </ul>
+
+    <div class="signature-section">
+      <div class="sig-block">
+        <label>Ort, Datum &amp; Unterschrift Kunde / Kundin</label>
+        <div class="sig-line"></div>
+        <div class="sig-name">{{Name}}</div>
+      </div>
+      <div class="sig-block">
+        <label>Ort, Datum &amp; Unterschrift Transform·Lab</label>
+        <div class="sig-line"></div>
+        <div class="sig-name">Gabriel &amp; Ionel Palosi · Veitshochheim</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <span>Teilnahme- &amp; Kautionsbedingungen · Stand: 10.07.2026</span>
+  <span class="brand">Transform·Lab · hallo@transform-lab.de</span>
+  <span>Heidenfelder Str. 12 · 97209 Veitshochheim</span>
+</div>
+
+<script>
+(function() {
+  var n = parseInt('{{3.Programmdauer}}', 10);
+  if (!n || n < 1) n = 8;
+  var perWeek = Math.round(199 / n);
+  var lastWeek = 199 - (n - 1) * perWeek;
+  var tbody = document.getElementById('refund-tbody');
+  if (!tbody) return;
+  var rows = '';
+  for (var i = 1; i < n; i++) {
+    rows += '<tr><td>Woche ' + i + '</td><td class="amt">' + perWeek + ',00 EUR</td><td>Check-in fristgerecht eingereicht und Wochenziele erfüllt</td></tr>';
+  }
+  rows += '<tr><td>Abschluss-Check-in</td><td class="amt">' + lastWeek + ',00 EUR</td><td>Finaler Check-in vollständig eingereicht</td></tr>';
+  tbody.innerHTML = rows;
+})();
+</script>
+</body>
+</html>
