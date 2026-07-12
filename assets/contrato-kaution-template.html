@@ -267,15 +267,15 @@
 <div class="client-box">
   <div class="client-field">
     <label>Kunde / Kundin</label>
-    <div class="value">{{Name}}</div>
+    <div class="value">{{3.Nombre}}</div>
   </div>
   <div class="client-field">
     <label>E-Mail</label>
-    <div class="value">{{Email}}</div>
+    <div class="value">{{3.Email}}</div>
   </div>
   <div class="client-field">
     <label>Startdatum</label>
-    <div class="value">{{Startdatum}}</div>
+    <div class="value">{{formatDate(now; "DD.MM.YYYY")}}</div>
   </div>
 </div>
 <div class="client-meta">
@@ -487,7 +487,7 @@
       <div class="sig-block">
         <label>Ort, Datum &amp; Unterschrift Kunde / Kundin</label>
         <div class="sig-line"></div>
-        <div class="sig-name">{{Name}}</div>
+        <div class="sig-name">{{3.Nombre}} · {{formatDate(now; "DD.MM.YYYY")}}</div>
       </div>
       <div class="sig-block">
         <label>Ort, Datum &amp; Unterschrift Transform·Lab</label>
@@ -501,7 +501,7 @@
 
 <!-- FOOTER -->
 <div class="footer">
-  <span>Teilnahme- &amp; Kautionsbedingungen · Stand: 10.07.2026</span>
+  <span>Teilnahme- &amp; Kautionsbedingungen · Stand: {{formatDate(now; "DD.MM.YYYY")}}</span>
   <span class="brand">Transform·Lab · hallo@transform-lab.de</span>
   <span>Heidenfelder Str. 12 · 97209 Veitshochheim</span>
 </div>

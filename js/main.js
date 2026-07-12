@@ -250,6 +250,17 @@
     });
   }
 
+  /* ─── REVIEW FORM ─────────────────────────────────────────────────────────── */
+  const reviewForm = document.getElementById('reviewForm');
+  if (reviewForm) {
+    reviewForm.addEventListener('submit', e => {
+      e.preventDefault();
+      reviewForm.style.display = 'none';
+      const thanks = document.getElementById('reviewThanks');
+      if (thanks) thanks.style.display = 'block';
+    });
+  }
+
   /* ─── PLAN SELECTOR: pricing CTAs preseleccionan radio + precio dinámico ─── */
 
   // ⚠️ STRIPE: pega aquí el link de pago de Stripe para el plan de 139 €
