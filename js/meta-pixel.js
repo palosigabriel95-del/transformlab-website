@@ -2,14 +2,19 @@
  * Transform·Lab — Meta Pixel (Base + Consent-Gating)
  * ------------------------------------------------------------
  * Der Pixel bleibt INAKTIV, bis der Nutzer Marketing-Cookies
- * über das Consent-Banner akzeptiert. Das Banner ruft dazu
- * window.TLPixel.grantConsent() auf (oder feuert das Event
- * "tl-consent-granted"). Erst dann werden Pixel geladen und
- * PageView gefeuert — genau EINMAL pro Seitenaufruf.
+ * über das Consent-Banner (js/consent.js) akzeptiert. Das Banner
+ * ruft window.TLPixel.grantConsent() auf. Erst dann werden Pixel
+ * geladen und PageView gefeuert — genau EINMAL pro Seitenaufruf.
  *
- * Zum Ändern der Pixel-ID nur META_PIXEL_ID unten anpassen.
- * Enthält KEINE Conversion-Events (kommen später). window.TLPixel
- * ist für Custom-Events + Conversion API (eventID) vorbereitet.
+ * Pixel-ID ändern: nur META_PIXEL_ID unten.
+ *
+ * CUSTOM-EVENTS (P4): unten in TLPixel als Methoden vorbereitet
+ * (lead, purchase, viewContent, completeRegistration, addToCart).
+ * Sie sind DEFINIERT aber NICHT aktiv — nirgends aufgerufen. Zum
+ * Aktivieren später an der passenden Stelle z. B.:
+ *   TLPixel.lead({ value: 259, currency: 'EUR' }, TLPixel.newEventId());
+ * Conversion API (CAPI): TLPixel.newEventId() erzeugt eine eventId
+ * für die Server-seitige Deduplizierung (dieselbe id an CAPI senden).
  * ============================================================ */
 (function () {
   'use strict';
@@ -48,34 +53,35 @@
     fbq('track', 'PageView');
   }
 
-  /* Zustimmung wurde bereits (bei einem früheren Besuch) erteilt? */
   function hasConsent() {
     try { return window.localStorage.getItem(CONSENT_KEY) === 'granted'; }
     catch (e) { return false; }
   }
 
-  /* Pixel bleibt inaktiv bis zur Zustimmung:
-     - schon zugestimmt  → sofort laden
-     - noch nicht        → auf das Banner-Event warten */
+  /* Pixel bleibt inaktiv bis zur Zustimmung. */
   if (hasConsent()) {
     loadPixel();
   } else {
     window.addEventListener('tl-consent-granted', loadPixel, { once: true });
   }
 
-  /* ── Öffentliche API ────────────────────────────────────────
-     Das Consent-Banner ruft TLPixel.grantConsent() auf, sobald der
-     Nutzer Marketing-Cookies akzeptiert. Custom-Events später via
-     TLPixel.track(...) — eventId optional für Conversion-API-Dedup. */
+  /* ── Öffentliche API ──────────────────────────────────────── */
   window.TLPixel = {
+    /* Consent (vom Banner aufgerufen) */
     grantConsent: function () {
       try { window.localStorage.setItem(CONSENT_KEY, 'granted'); } catch (e) {}
       loadPixel();
     },
     revokeConsent: function () {
       try { window.localStorage.setItem(CONSENT_KEY, 'denied'); } catch (e) {}
+      // fbevents wird erst beim nächsten Seitenaufruf ohne Consent nicht geladen.
+    },
+    consentStatus: function () {
+      try { return window.localStorage.getItem(CONSENT_KEY); } catch (e) { return null; }
     },
     ready: function () { return typeof window.fbq === 'function'; },
+
+    /* Generische Tracker (Basis für alles Weitere) */
     track: function (event, params, eventId) {
       if (!window.fbq) return;
       if (eventId) fbq('track', event, params || {}, { eventID: eventId });
@@ -85,9 +91,21 @@
       if (!window.fbq) return;
       if (eventId) fbq('trackCustom', event, params || {}, { eventID: eventId });
       else fbq('trackCustom', event, params || {});
+    },
+
+    /* ── P4: Standard-Events VORBEREITET, aber NICHT aktiv ──────
+       Nirgends aufgerufen. Später an der richtigen Stelle nutzen. */
+    lead: function (params, eventId) { this.track('Lead', params, eventId); },
+    purchase: function (params, eventId) { this.track('Purchase', params, eventId); }, // {value, currency}
+    viewContent: function (params, eventId) { this.track('ViewContent', params, eventId); },
+    completeRegistration: function (params, eventId) { this.track('CompleteRegistration', params, eventId); },
+    addToCart: function (params, eventId) { this.track('AddToCart', params, eventId); },
+
+    /* CAPI-Deduplizierung: dieselbe eventId an Pixel UND Conversion API senden. */
+    newEventId: function () {
+      return 'tl_' + Date.now() + '_' + Math.random().toString(36).slice(2, 10);
     }
   };
 
-  /* SPA-Hinweis: MPA → PageView feuert pro echtem Seitenaufruf einmal.
-     Bei späterem Client-Routing pro Routenwechsel TLPixel.track('PageView'). */
+  /* SPA-Hinweis: MPA → PageView feuert pro echtem Seitenaufruf einmal. */
 })();
