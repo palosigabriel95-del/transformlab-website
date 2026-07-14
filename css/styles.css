@@ -1295,6 +1295,12 @@ section { padding: 120px 0; }
 .form-group textarea:focus { border-color: var(--green); }
 .form-group select { appearance: none; cursor: pointer; }
 .form-group textarea { resize: vertical; }
+
+/* Dropdown-Optionen immer lesbar (sonst weißer Text auf weißem Grund) */
+select option {
+  background: #ffffff;
+  color: #1a1a1a;
+}
 .form-group input::placeholder,
 .form-group textarea::placeholder { color: var(--text-dim); }
 
