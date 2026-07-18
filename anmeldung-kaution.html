@@ -220,6 +220,22 @@
       color: var(--text-muted);
       line-height: 1.6;
     }
+    .form-consent a { color: var(--green-light); text-decoration: underline; }
+    .foto-marketing-optionen {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin: -6px 0 0 46px;
+    }
+    .foto-marketing-optionen label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+    .foto-marketing-optionen input[type="radio"] { width: 15px; height: 15px; accent-color: var(--green); }
 
     .btn-submit {
       width: 100%;
@@ -529,9 +545,18 @@
         <!-- FOOTER -->
         <div class="form-footer">
           <label class="form-consent">
-            <input type="checkbox" name="salud_einwilligung" required>
-            <span>Ich willige ausdrücklich ein, dass Transform·Lab meine gesundheitsbezogenen Angaben (Gewicht, Verletzungen, Erkrankungen) gemäß Art. 9 Abs. 2 lit. a DSGVO ausschließlich zur Erstellung meines persönlichen Programms verarbeitet. Diese Einwilligung kann ich jederzeit widerrufen.</span>
+            <input type="checkbox" name="einwilligung_pflicht" required>
+            <span>Ich akzeptiere die <a href="agb.html" target="_blank" rel="noopener">AGB</a> und die <a href="datenschutz.html" target="_blank" rel="noopener">Datenschutzerklärung</a>. Ich willige ausdrücklich ein, dass Transform·Lab meine gesundheitsbezogenen Angaben (Gewicht, Verletzungen, Erkrankungen) gemäß Art. 9 Abs. 2 lit. a DSGVO ausschließlich zur Erstellung meines persönlichen Plans verarbeitet. Ich verlange ausdrücklich den Beginn der Leistung vor Ablauf der 14-tägigen Widerrufsfrist und weiß, dass ich mit vollständiger Vertragserfüllung mein Widerrufsrecht verliere. Meine Einwilligungen kann ich jederzeit mit Wirkung für die Zukunft widerrufen.</span>
           </label>
+
+          <label class="form-consent">
+            <input type="checkbox" name="foto_marketing_einwilligung" id="ak-foto-marketing">
+            <span><strong>Freiwillig:</strong> Ich erlaube Transform·Lab, meine Vorher-/Nachher-Fotos auf der Website und in der Werbung zu verwenden. Diese Einwilligung ist freiwillig und jederzeit widerrufbar.</span>
+          </label>
+          <div class="foto-marketing-optionen">
+            <label><input type="radio" name="foto_marketing_art" value="anonym" checked> anonym (ohne Gesicht/Name)</label>
+            <label><input type="radio" name="foto_marketing_art" value="mit_vorname"> mit meinem Vornamen</label>
+          </div>
 
           <button type="submit" class="btn-submit" id="akSubmitBtn">
             Anmeldung absenden — Zahlungslink folgt per E-Mail
