@@ -2,8 +2,8 @@
  * Transform·Lab — Cookie-Consent (Marketing)
  * ------------------------------------------------------------
  * Technische Consent-Verwaltung nach DSGVO. Notwendige Cookies
- * und Plausible (cookieless) laufen immer; MARKETING (Meta Pixel)
- * nur nach ausdrücklicher Zustimmung.
+ * und Plausible (cookieless) laufen immer; MARKETING (Meta Pixel,
+ * TikTok Pixel) nur nach ausdrücklicher Zustimmung.
  *
  * - Zeigt das Banner nur, wenn noch keine Entscheidung vorliegt.
  * - "Akzeptieren"  → TLPixel.grantConsent()  (Pixel lädt)
@@ -21,9 +21,13 @@
   function set(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
 
   function apply(granted) {
-    if (!window.TLPixel) return;
-    if (granted) window.TLPixel.grantConsent();
-    else window.TLPixel.revokeConsent();
+    if (granted) {
+      if (window.TLPixel) window.TLPixel.grantConsent();   // Meta
+      if (window.TTPixel) window.TTPixel.grantConsent();   // TikTok
+    } else {
+      if (window.TLPixel) window.TLPixel.revokeConsent();  // Meta
+      if (window.TTPixel) window.TTPixel.revokeConsent();  // TikTok
+    }
   }
 
   function el(id) { return document.getElementById(id); }
@@ -40,7 +44,7 @@
     w.innerHTML =
       '<div style="max-width:1000px;margin:0 auto;display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between">' +
         '<div style="flex:1;min-width:260px">Wir verwenden notwendige Cookies für den Betrieb der Seite. ' +
-        'Mit deiner Zustimmung setzen wir zusätzlich <b>Marketing-Cookies (Meta Pixel)</b>, um unsere Werbung zu verbessern. ' +
+        'Mit deiner Zustimmung setzen wir zusätzlich <b>Marketing-Cookies (Meta Pixel, TikTok Pixel)</b>, um unsere Werbung zu verbessern. ' +
         'Mehr dazu in der <a href="datenschutz.html" style="color:' + GREEN + ';text-decoration:underline">Datenschutzerklärung</a>. ' +
         'Du kannst deine Wahl jederzeit ändern.</div>' +
         '<div style="display:flex;gap:10px;flex-shrink:0">' +
