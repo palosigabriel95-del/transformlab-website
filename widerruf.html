@@ -155,62 +155,40 @@
       </p>
 
       <div class="widerruf-formular">
-        <h3>Widerrufsformular online ausfüllen</h3>
-        <p>Füllen Sie das Formular aus und klicken Sie auf „Widerruf absenden". Wir bestätigen den Eingang per E-Mail.</p>
+        <p>
+          Sie können dieses Formular verwenden — vorgeschrieben ist es nicht. Es genügt eine
+          eindeutige Erklärung per E-Mail an
+          <a href="mailto:hallo@transform-lab.de">hallo@transform-lab.de</a> oder per Post an die
+          unten genannte Anschrift. Wir bestätigen Ihnen den Eingang per E-Mail.
+        </p>
 
-        <form action="https://formspree.io/f/mzdqyror" method="POST" style="margin-top:24px;">
-          <input type="hidden" name="_subject" value="Widerruf – Transform·Lab">
-          <input type="hidden" name="_next" value="https://www.transform-lab.de/widerruf.html?widerruf=ok">
-          <input type="hidden" name="typ" value="Widerruf">
+        <h3>An</h3>
+        <address style="font-size:14px;">
+          Gabriel Palosi<br>
+          Heidenfelderstr. 12<br>
+          97209 Veitshöchheim<br>
+          Deutschland<br>
+          E-Mail: <a href="mailto:hallo@transform-lab.de">hallo@transform-lab.de</a>
+        </address>
 
-          <div style="margin-bottom:16px;">
-            <label style="display:block;font-size:13px;color:var(--text-muted);margin-bottom:6px;">Ihr vollständiger Name *</label>
-            <input type="text" name="name" required style="width:100%;background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:10px 14px;color:var(--text);font-size:14px;font-family:inherit;">
-          </div>
+        <p style="margin-top:24px;">
+          Hiermit widerrufe(n) ich/wir (*) den von mir/uns (*) abgeschlossenen Vertrag über
+          die Erbringung der folgenden Dienstleistung:
+        </p>
 
-          <div style="margin-bottom:16px;">
-            <label style="display:block;font-size:13px;color:var(--text-muted);margin-bottom:6px;">E-Mail-Adresse *</label>
-            <input type="email" name="_replyto" required style="width:100%;background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:10px 14px;color:var(--text);font-size:14px;font-family:inherit;">
-          </div>
+        <div class="wf-field">Gebuchtes Programm (z. B. „Nur Plan" oder „Challenge mit Kaution")</div>
+        <div class="wf-field">Bestellt am (*) / erhalten am (*)</div>
+        <div class="wf-field">Name des/der Verbraucher(s)</div>
+        <div class="wf-field">Anschrift des/der Verbraucher(s)</div>
+        <div class="wf-field">Unterschrift des/der Verbraucher(s) (nur bei Mitteilung auf Papier)</div>
+        <div class="wf-field">Datum</div>
 
-          <div style="margin-bottom:16px;">
-            <label style="display:block;font-size:13px;color:var(--text-muted);margin-bottom:6px;">Gebuchtes Produkt *</label>
-            <select name="produkt" required style="width:100%;background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:10px 14px;color:var(--text);font-size:14px;font-family:inherit;">
-              <option value="">– bitte wählen –</option>
-              <option value="Nur Plan (139 €)">Nur Plan (139 €)</option>
-              <option value="Challenge mit Kaution (259 €)">Challenge mit Kaution (259 €)</option>
-            </select>
-          </div>
-
-          <div style="margin-bottom:16px;">
-            <label style="display:block;font-size:13px;color:var(--text-muted);margin-bottom:6px;">Bestelldatum (Datum der Zahlungsbestätigung) *</label>
-            <input type="date" name="bestelldatum" required style="width:100%;background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:10px 14px;color:var(--text);font-size:14px;font-family:inherit;">
-          </div>
-
-          <div style="margin-bottom:24px;">
-            <label style="display:block;font-size:13px;color:var(--text-muted);margin-bottom:6px;">Anmerkungen (optional)</label>
-            <textarea name="anmerkungen" rows="3" style="width:100%;background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:10px 14px;color:var(--text);font-size:14px;font-family:inherit;resize:vertical;"></textarea>
-          </div>
-
-          <button type="submit" style="background:var(--green);color:#fff;border:none;border-radius:6px;padding:12px 28px;font-size:14px;font-weight:500;cursor:pointer;width:100%;font-family:inherit;">
-            Widerruf absenden
-          </button>
-        </form>
-
-        <script>
-          (function(){
-            var params = new URLSearchParams(window.location.search);
-            if(params.get('widerruf') === 'ok'){
-              var f = document.querySelector('.widerruf-formular form');
-              if(f){ f.innerHTML = '<p style="color:var(--green-light);font-size:15px;padding:16px 0;">✓ Ihr Widerruf wurde erfolgreich übermittelt. Wir bestätigen den Eingang per E-Mail.</p>'; }
-            }
-          })();
-        </script>
+        <p style="margin-top:20px;font-size:13px;">(*) Unzutreffendes streichen.</p>
       </div>
 
       <hr class="legal-divider">
 
-      <p style="font-size:13px; margin-top: 40px;">Stand: Juni 2026 · Transform·Lab · Gabriel Palosi</p>
+      <p style="font-size:13px; margin-top: 40px;">Stand: Juli 2026 · Transform·Lab · Gabriel Palosi</p>
 
     </div>
   </main>
