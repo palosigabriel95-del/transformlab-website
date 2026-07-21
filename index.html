@@ -95,6 +95,21 @@
       font-size: 13px; line-height: 1.7; color: var(--text-muted);
     }
     .numbers-note strong { color: var(--text); font-weight: 500; }
+
+    /* Challenge mit Kaution: nur Fett verlieren wählbar */
+    .radio-card--disabled { opacity: .38; }
+    .radio-card--disabled .radio-label { cursor: default; }
+    .objetivo-note {
+      font-size: 12px; color: var(--text-dim); line-height: 1.6;
+      margin: 10px 0 0;
+    }
+    .objetivo-note a { color: var(--green-light); text-decoration: none; }
+
+    /* Gesamtbetrag unter den Hero-Preiskarten */
+    .hero-price-total {
+      margin-top: 10px; font-size: 12.5px; color: var(--text-dim); letter-spacing: .03em;
+    }
+    .hero-price-total strong { color: var(--text-muted); font-weight: 500; }
   </style>
 </head>
 <body>
@@ -167,6 +182,7 @@
                 <div class="hpc-label">Bis zu 100% rückerstattbar</div>
               </div>
             </div>
+            <p class="hero-price-total">Heute zu zahlen: <strong>259 €</strong> — davon bis zu 199 € zurück.</p>
 
             <ul class="hero-trust" aria-label="Programmgarantien">
               <li>
@@ -495,7 +511,7 @@
               <div class="pc-label">Nur Plan</div>
               <h3 class="pc-title">Nur Plan</h3>
               <div class="pc-price">139<span>€</span></div>
-              <div class="pc-price-note">139 € einmalig · Flexible Alternative · Ohne Kautionssystem</div>
+              <div class="pc-price-note">139 € einmalig · 21-Tage-Plan · Ohne Kautionssystem</div>
             </div>
             <ul class="pc-list">
               <li class="pc-list-section">Enthalten:</li>
@@ -525,7 +541,7 @@
               <div class="pc-label">Das Hauptprogramm von Transform·Lab</div>
               <h3 class="pc-title">Challenge mit Kaution</h3>
               <div class="pc-price">60<span>€</span> <small>+ 199 € Kaution</small></div>
-              <div class="pc-price-note">Das Hauptprogramm · Zeitraum nach Zielprüfung</div>
+              <div class="pc-price-note">Heute zu zahlen: 259 € · 60 € Programm + 199 € rückerstattbare Kaution</div>
             </div>
             <ul class="pc-list">
               <li class="pc-list-section">Enthalten:</li>
@@ -642,7 +658,6 @@
             <p class="summary-foot">
               Ziele, Beträge und Bedingungen können je nach Person variieren.
               Alles wird individuell vor dem Start festgelegt.
-              Bei Muskelaufbau oder Körperstraffung werden Wochenziele individuell definiert und nicht nur am Gewicht gemessen.
             </p>
           </aside>
         </div>
@@ -654,7 +669,7 @@
       <div class="container">
         <span class="label label-line reveal">Was in der Challenge enthalten ist</span>
         <h2 id="includes-heading" class="reveal">Was in der Challenge enthalten ist.</h2>
-        <p class="includes-note reveal reveal-delay-1">Der Nur Plan für 139 € enthält Ernährungsplan, Trainingsplan und Start-Empfehlungen — ohne wöchentliches Check-in, ohne Kaution und ohne Rückerstattung.</p>
+        <p class="includes-note reveal reveal-delay-1">Der Nur Plan für 139 € enthält einen auf 21 Tage ausgelegten Ernährungs- und Trainingsplan plus Start-Empfehlungen — ohne wöchentliches Check-in, ohne Kaution und ohne Rückerstattung.</p>
 
         <ul class="includes-grid" style="list-style:none">
           <li class="include-card reveal">
@@ -1052,8 +1067,9 @@
             </button>
             <div class="faq-answer" id="faq-answer-9a" role="region">
               <div class="faq-answer-inner">
-                Der Nur Plan enthält deinen persönlichen Ernährungsplan, einen angepassten
-                Trainingsplan und Start-Empfehlungen. Er enthält kein wöchentliches Check-in,
+                Der Nur Plan enthält deinen persönlichen Ernährungs- und Trainingsplan,
+                ausgelegt auf 21 Tage, plus Start-Empfehlungen. Die Lieferung erfolgt innerhalb
+                von 5 Werktagen nach Zahlungseingang. Er enthält kein wöchentliches Check-in,
                 keine Kaution und keine Rückerstattung.
               </div>
             </div>
@@ -1269,14 +1285,14 @@
                 <input type="radio" name="plan" value="mit_kaution" id="plan-kaution" required>
                 <span class="radio-label">
                   <strong>Mit Kaution</strong>
-                  <small>60 € + 199 € · Check-in inklusive</small>
+                  <small>259 € gesamt (60 € + 199 € Kaution) · Check-in inklusive</small>
                 </span>
               </label>
               <label class="radio-card radio-card--plan">
                 <input type="radio" name="plan" value="nur_plan" id="plan-nur">
                 <span class="radio-label">
                   <strong>Nur Plan</strong>
-                  <small>139 € einmalig · Ohne Kaution</small>
+                  <small>139 € · 21-Tage-Plan · Ohne Kaution</small>
                 </span>
               </label>
             </div>
@@ -1322,6 +1338,11 @@
                   <span class="radio-label">Gewohnheiten verbessern</span>
                 </label>
               </div>
+              <p class="objetivo-note" id="objetivoKautionNote" hidden>
+                Die Challenge mit Kaution gibt es aktuell nur für das Ziel <strong>„Fett verlieren"</strong> —
+                die Rückerstattung wird über dein Gewicht gemessen. Für Muskelaufbau, Definition oder
+                Gewohnheiten empfehlen wir den <strong>Nur Plan</strong>.
+              </p>
             </div>
 
             <div class="form-notice" style="display:flex;gap:10px;align-items:flex-start;background:var(--surface);border-left:3px solid var(--green);border-radius:0 8px 8px 0;padding:12px 16px;margin-bottom:16px;font-size:13px;color:var(--text-muted);line-height:1.6;">
@@ -1608,7 +1629,7 @@
         &nbsp;·&nbsp;
         <a href="agb.html" style="color:var(--text-muted)">AGB</a>
         &nbsp;·&nbsp;
-        <a href="widerruf.html" style="color:var(--text-muted)">Widerruf</a>
+        <a href="widerruf.html" style="color:var(--text-muted)">Vertrag widerrufen</a>
       </p>
       <p style="font-size:11px;max-width:500px;line-height:1.6">
         Die Ergebnisse können variieren. Das Programm ersetzt keine professionelle
@@ -1618,7 +1639,7 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=27"></script>
+  <script src="js/main.js?v=28"></script>
   <script>
     (function(){
       var stars = document.querySelectorAll('#starRating span');

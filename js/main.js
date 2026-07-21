@@ -320,7 +320,7 @@
 
     if (formIntro) {
       formIntro.textContent = isNurplan
-        ? 'Nach dem Absenden wirst du zur sicheren Zahlung weitergeleitet. Nach erfolgreicher Zahlung prüfen wir deine Angaben und erstellen deinen individuellen Ernährungs- und Trainingsplan.'
+        ? 'Nach dem Absenden wirst du zur sicheren Zahlung weitergeleitet. Nach erfolgreicher Zahlung erstellen wir deinen individuellen Ernährungs- und Trainingsplan — Lieferung innerhalb von 5 Werktagen nach Zahlungseingang.'
         : 'Wir prüfen deine Anfrage und melden uns innerhalb von 24 Stunden mit den nächsten Schritten. Es wird noch keine Zahlung ausgelöst.';
     }
 
@@ -339,7 +339,7 @@
       fpsLabel.textContent = 'Nur Plan — Ernährungs- + Trainingsplan';
       fpsTotal.textContent = '139 €';
     } else if (value === 'mit_kaution') {
-      fpsLabel.textContent = 'Komplettpaket — 60 € Programm + 199 € Kaution';
+      fpsLabel.textContent = 'Heute zu zahlen — 60 € Programm + 199 € rückerstattbare Kaution';
       fpsTotal.textContent = '259 €';
     } else {
       fpsLabel.textContent = 'Wähle oben einen Plan aus';
@@ -354,11 +354,28 @@
     else if (value === 'mit_kaution') subjectField.value = 'Neue Anfrage: Mit Kaution (259 €)';
   }
 
+  /* Challenge mit Kaution: nur "Fett verlieren" wählbar — andere Ziele nur im Nur Plan */
+  const objetivoRadios = document.querySelectorAll('input[name="objetivo"]');
+  const objetivoNote   = document.getElementById('objetivoKautionNote');
+  function updateObjetivoOptions(planValue) {
+    if (!objetivoRadios.length) return;
+    const kautionOnly = planValue === 'mit_kaution';
+    objetivoRadios.forEach(r => {
+      if (r.value === 'fett_verlieren') return;
+      r.disabled = kautionOnly;
+      if (kautionOnly && r.checked) r.checked = false;
+      const card = r.closest('.radio-card');
+      if (card) card.classList.toggle('radio-card--disabled', kautionOnly);
+    });
+    if (objetivoNote) objetivoNote.hidden = !kautionOnly;
+  }
+
   planRadios.forEach(radio => {
     radio.addEventListener('change', () => {
       updatePriceSummary(radio.value);
       updateSubject(radio.value);
       setNurplanMode(radio.value === 'nur_plan');
+      updateObjetivoOptions(radio.value);
     });
   });
 
@@ -372,6 +389,7 @@
         updatePriceSummary(planVal);
         updateSubject(planVal);
         setNurplanMode(planVal === 'nur_plan');
+        updateObjetivoOptions(planVal);
       }
     });
   });
