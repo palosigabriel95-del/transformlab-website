@@ -603,6 +603,18 @@
 
     form.addEventListener('submit', async e => {
       e.preventDefault();
+
+      // Challenge = Fett verlieren: Zielgewicht muss unter dem aktuellen Gewicht liegen
+      const aktuell = parseFloat(form.elements['gewicht_aktuell'].value);
+      const ziel    = parseFloat(form.elements['gewicht_ziel'].value);
+      if (!isNaN(aktuell) && !isNaN(ziel) && ziel >= aktuell) {
+        const zielInput = form.elements['gewicht_ziel'];
+        zielInput.setCustomValidity('Dein Zielgewicht muss unter deinem aktuellen Gewicht liegen — die Challenge gibt es aktuell nur fürs Abnehmen.');
+        zielInput.reportValidity();
+        zielInput.addEventListener('input', () => zielInput.setCustomValidity(''), { once: true });
+        return;
+      }
+
       btn.disabled = true;
       btn.textContent = 'Wird gesendet…';
       try {

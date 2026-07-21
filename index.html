@@ -50,12 +50,22 @@
       "name": "Gabriel Palosi",
       "email": "hallo@transform-lab.de"
     },
-    "offers": {
-      "@type": "Offer",
-      "price": "60.00",
-      "priceCurrency": "EUR",
-      "description": "Einführungspreis. Zusätzlich 199 € rückerstattbare Commitment-Kaution."
-    },
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Nur Plan",
+        "price": "139.00",
+        "priceCurrency": "EUR",
+        "description": "Persönlicher Ernährungs- und Trainingsplan, ausgelegt auf 3 Wochen (21 Tage)."
+      },
+      {
+        "@type": "Offer",
+        "name": "Challenge mit Kaution",
+        "price": "259.00",
+        "priceCurrency": "EUR",
+        "description": "60 € Programmpreis + 199 € rückerstattbare Commitment-Kaution."
+      }
+    ],
     "serviceType": "Fitness- und Ernährungscoaching",
     "areaServed": "DE"
   }
@@ -1411,11 +1421,11 @@
               <div class="form-row form-row--2">
                 <div class="form-group">
                   <label for="f-gewicht">Aktuelles Gewicht (kg) <span class="form-required">*</span></label>
-                  <input type="number" id="f-gewicht" name="gewicht_aktuell" placeholder="z.B. 85" min="40" max="200">
+                  <input type="number" id="f-gewicht" name="gewicht_aktuell" placeholder="z.B. 85" min="40" max="250">
                 </div>
                 <div class="form-group">
                   <label for="f-zielgewicht">Zielgewicht (kg) <span class="form-required">*</span></label>
-                  <input type="number" id="f-zielgewicht" name="gewicht_ziel" placeholder="z.B. 78" min="40" max="200">
+                  <input type="number" id="f-zielgewicht" name="gewicht_ziel" placeholder="z.B. 78" min="40" max="250">
                 </div>
               </div>
 
