@@ -320,7 +320,7 @@
 
     if (formIntro) {
       formIntro.textContent = isNurplan
-        ? 'Nach dem Absenden wirst du zur sicheren Zahlung weitergeleitet. Nach erfolgreicher Zahlung erstellen wir deinen individuellen Ernährungs- und Trainingsplan — Lieferung innerhalb von 5 Werktagen nach Zahlungseingang.'
+        ? 'Nach dem Absenden wirst du zur sicheren Zahlung weitergeleitet. Nach erfolgreicher Zahlung erstellen wir deinen individuellen Ernährungs- und Trainingsplan — Lieferung innerhalb von 48 Stunden nach Zahlungseingang.'
         : 'Wir prüfen deine Anfrage und melden uns innerhalb von 24 Stunden mit den nächsten Schritten. Es wird noch keine Zahlung ausgelöst.';
     }
 
